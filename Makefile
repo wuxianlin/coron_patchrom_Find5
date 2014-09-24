@@ -68,7 +68,7 @@ vendor_remove_dirs := app vendor/operator/app
 ##############################################################################
 # Vendor apks you want to use
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth
+vendor_saved_apps := Bluetooth Nfc Stk
 
 ##############################################################################
 # Apks build from current project root directory
