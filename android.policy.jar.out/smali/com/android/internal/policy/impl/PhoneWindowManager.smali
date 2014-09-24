@@ -203,6 +203,8 @@
 
 .field mBackKillTimeout:I
 
+.field private mBaiduLongPressRunnable:Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector$KillRunnable;
+
 .field mBootMsgDialog:Landroid/app/ProgressDialog;
 
 .field mBroadcastWakeLock:Landroid/os/PowerManager$WakeLock;
@@ -8041,6 +8043,8 @@
 
     iput v2, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mSystemTop:I
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->setSystemTop(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
+
     :cond_9
     move-object/from16 v0, p0
 
@@ -12362,6 +12366,8 @@
 
     invoke-virtual {p1, v3, v1}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->flashRegister(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
+
     new-instance v3, Lcom/android/internal/policy/impl/SystemGesturesPointerEventListener;
 
     new-instance v4, Lcom/android/internal/policy/impl/PhoneWindowManager$7;
@@ -13155,6 +13161,12 @@
     :cond_6
     move-object/from16 v0, p0
 
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->longPressKiller(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/KeyEvent;)V
+
+    move-object/from16 v0, p0
+
     iget-boolean v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mScreenrecordChordEnabled:Z
 
     move/from16 v35, v0
@@ -13496,7 +13508,7 @@
     goto/16 :goto_3
 
     :cond_10
-    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->launchHomeFromHotKey()V
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->launchHomeFromHotKeyIfNeeded(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
 
     goto :goto_4
 
@@ -13541,6 +13553,12 @@
     if-ne v0, v1, :cond_14
 
     :cond_12
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->flashOpen(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/KeyEvent;)V
+
     const-wide/16 v35, 0x0
 
     goto/16 :goto_3
@@ -16063,6 +16081,8 @@
     move-result v18
 
     if-nez v18, :cond_0
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->interceptKeyBeforeQueueingHook(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/KeyEvent;)V
 
     sparse-switch v12, :sswitch_data_0
 
