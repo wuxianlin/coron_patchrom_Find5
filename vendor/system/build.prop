@@ -12,13 +12,13 @@ ro.build.type=userdebug
 ro.build.user=jenkins
 ro.build.host=devbox.omnirom.org
 ro.build.tags=test-keys
-ro.product.brand=Android
+ro.product.brand=OPPO
 ro.product.board=find5
 ro.product.cpu.abi=armeabi-v7a
 ro.product.cpu.abi2=armeabi
-ro.product.manufacturer=Oppo
-ro.product.locale.language=en
-ro.product.locale.region=US
+ro.product.manufacturer=OPPO
+ro.product.locale.language=zh
+ro.product.locale.region=CN
 ro.wifi.channels=
 ro.board.platform=msm8960
 # ro.build.product is obsolete; use ro.product.device
@@ -28,7 +28,7 @@ ro.product.name=omni_find5
 ro.product.device=find5
 # Do not try to parse ro.build.description or .fingerprint
 ro.build.description=omni_find5-userdebug 4.4.2 KVT49L 251 test-keys
-ro.build.fingerprint=Android/omni_find5/find5:4.4.2/KVT49L/251:userdebug/test-keys
+ro.build.fingerprint=OPPO/omni_find5/find5:4.4.2/KVT49L/251:userdebug/test-keys
 ro.build.characteristics=nosdcard
 ro.omni.device=find5
 # end build properties
