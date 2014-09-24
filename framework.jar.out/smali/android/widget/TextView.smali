@@ -3910,7 +3910,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$1000(Landroid/widget/TextView;)Landroid/content/Context;
+.method static synthetic access$500(Landroid/widget/TextView;)Landroid/content/Context;
     .locals 1
     .parameter "x0"
 

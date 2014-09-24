@@ -1020,7 +1020,7 @@
     if-ne v0, v6, :cond_1
 
     .line 398
-    invoke-direct {p0}, Landroid/view/VolumePanel;->addOtherVolumes()V
+    invoke-virtual {p0}, Landroid/view/VolumePanel;->addOtherVolumes()V
 
     .line 399
     invoke-direct {p0}, Landroid/view/VolumePanel;->expand()V
