@@ -1740,36 +1740,35 @@
 
     const/4 v1, 0x0
 
-    .line 436
     if-nez p1, :cond_0
 
     invoke-virtual {p0}, Lcom/android/internal/widget/LockPatternUtils;->deleteGallery()V
 
-    .line 437
     :cond_0
     const/high16 v0, 0x1
 
     invoke-virtual {p0, v1, v0}, Lcom/android/internal/widget/LockPatternUtils;->saveLockPassword(Ljava/lang/String;I)V
 
-    .line 438
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/LockPatternUtils;->setLockPatternEnabled(Z)V
 
-    .line 439
     invoke-virtual {p0, v1}, Lcom/android/internal/widget/LockPatternUtils;->saveLockPattern(Ljava/util/List;)V
 
-    .line 440
     const-string v0, "lockscreen.password_type"
 
     invoke-direct {p0, v0, v2, v3}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
 
-    .line 441
     const-string v0, "lockscreen.password_type_alternate"
 
     invoke-direct {p0, v0, v2, v3}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
 
-    .line 442
+    const-string v0, "lockscreen.lockmode_type"
+
+    const-wide/16 v1, 0x2
+
+    invoke-direct {p0, v0, v1, v2}, Lcom/android/internal/widget/LockPatternUtils;->setLong(Ljava/lang/String;J)V
+
     return-void
 .end method
 
@@ -2644,7 +2643,7 @@
 
     move-result-object v0
 
-    const v1, 0x1110040
+    const v1, #android:bool@config_voice_capable#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -2664,7 +2663,7 @@
 
     move-result-object v0
 
-    const v1, 0x1110034
+    const v1, #android:bool@config_enable_emergency_call_while_sim_locked#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -2963,7 +2962,7 @@
 
     move-result-object v0
 
-    const v1, 0x1110033
+    const v1, #android:bool@config_enable_puk_unlock_screen#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -4589,39 +4588,31 @@
 
     if-eqz p3, :cond_0
 
-    .line 1287
     invoke-virtual {p1, v3}, Landroid/widget/Button;->setVisibility(I)V
 
-    .line 1294
     const/4 v4, 0x2
 
     if-ne p2, v4, :cond_2
 
-    .line 1296
-    const v2, 0x1040327
+    const v2, #android:string@lockscreen_return_to_call#t
 
-    .line 1297
     .local v2, textId:I
     if-eqz p4, :cond_1
 
-    const v1, 0x1080084
+    const v1, #android:drawable@stat_sys_phone_call#t
 
-    .line 1298
     .local v1, phoneCallIcon:I
     :goto_0
     invoke-virtual {p1, v1, v3, v3, v3}, Landroid/widget/Button;->setCompoundDrawablesWithIntrinsicBounds(IIII)V
 
-    .line 1304
     .end local v1           #phoneCallIcon:I
     :goto_1
     invoke-virtual {p1, v2}, Landroid/widget/Button;->setText(I)V
 
-    .line 1305
     .end local v2           #textId:I
     :goto_2
     return-void
 
-    .line 1289
     :cond_0
     const/16 v3, 0x8
 
@@ -4633,21 +4624,17 @@
     :cond_1
     move v1, v3
 
-    .line 1297
     goto :goto_0
 
-    .line 1300
     .end local v2           #textId:I
     :cond_2
-    const v2, 0x1040326
+    const v2, #android:string@lockscreen_emergency_call#t
 
-    .line 1301
     .restart local v2       #textId:I
     if-eqz p4, :cond_3
 
-    const v0, 0x10802d9
+    const v0, #android:drawable@ic_emergency#t
 
-    .line 1302
     .local v0, emergencyIcon:I
     :goto_3
     invoke-virtual {p1, v0, v3, v3, v3}, Landroid/widget/Button;->setCompoundDrawablesWithIntrinsicBounds(IIII)V

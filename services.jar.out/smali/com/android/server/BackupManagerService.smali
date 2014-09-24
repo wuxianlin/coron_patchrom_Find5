@@ -1614,14 +1614,12 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 909
     new-instance v6, Lcom/android/server/BackupManagerService$TransportConnection;
 
     move-object/from16 v0, p0
 
     invoke-direct {v6, v0}, Lcom/android/server/BackupManagerService$TransportConnection;-><init>(Lcom/android/server/BackupManagerService;)V
 
-    .line 910
     .local v6, connection:Lcom/android/server/BackupManagerService$TransportConnection;
     move-object/from16 v0, p0
 
@@ -12448,4 +12446,16 @@
     invoke-static {v4, v5, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
+.end method
+
+.method static synthetic access$invoke-registerTransport-b82473(Lcom/android/server/BackupManagerService;Ljava/lang/String;Lcom/android/internal/backup/IBackupTransport;)V
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
+    .parameter "x2"
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/BackupManagerService;->registerTransport(Ljava/lang/String;Lcom/android/internal/backup/IBackupTransport;)V
+
+    return-void
 .end method

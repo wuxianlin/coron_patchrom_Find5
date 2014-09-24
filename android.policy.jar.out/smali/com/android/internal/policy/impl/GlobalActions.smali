@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;,
         Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;,
         Lcom/android/internal/policy/impl/GlobalActions$SilentModeTriStateAction;,
         Lcom/android/internal/policy/impl/GlobalActions$SilentModeToggleAction;,
@@ -352,7 +353,7 @@
 
     move-result-object v3
 
-    const v6, 0x111005f
+    const v6, #android:bool@config_useFixedVolume#t
 
     invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -370,7 +371,7 @@
 
     move-result-object v3
 
-    const v4, 0x1110021
+    const v4, #android:bool@config_enableScreenrecordChord#t
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -734,7 +735,7 @@
     :goto_2
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$13;
 
-    const v2, 0x108033e
+    const v2, #android:drawable@ic_menu_cc#t
 
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -970,15 +971,15 @@
     :goto_0
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$1;
 
-    const v2, 0x10802ea
+    const v2, #android:drawable@ic_lock_airplane_mode#t
 
-    const v3, 0x10802eb
+    const v3, #android:drawable@ic_lock_airplane_mode_off#t
 
-    const v4, 0x10400e6
+    const v4, #android:string@global_actions_toggle_airplane_mode#t
 
-    const v5, 0x10400e7
+    const v5, #android:string@global_actions_airplane_mode_on_status#t
 
-    const v6, 0x10400e8
+    const v6, #android:string@global_actions_airplane_mode_off_status#t
 
     move-object v1, p0
 
@@ -992,15 +993,15 @@
     .line 253
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$2;
 
-    const v2, 0x10802ed
+    const v2, #android:drawable@ic_lock_mobile_data#t
 
-    const v3, 0x10802ee
+    const v3, #android:drawable@ic_lock_mobile_data_off#t
 
-    const v4, 0x104004c
+    const v4, #android:string@global_actions_toggle_mobile_data#t
 
-    const v5, 0x104004d
+    const v5, #android:string@global_actions_mobile_data_on_status#t
 
-    const v6, 0x104004e
+    const v6, #android:string@global_actions_mobile_data_off_status#t
 
     move-object v1, p0
 
@@ -1020,9 +1021,9 @@
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$3;
 
-    const v2, 0x1080030
+    const v2, #android:drawable@ic_lock_power_off#t
 
-    const v3, 0x10400df
+    const v3, #android:string@global_action_power_off#t
 
     invoke-direct {v1, p0, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$3;-><init>(Lcom/android/internal/policy/impl/GlobalActions;II)V
 
@@ -1033,9 +1034,9 @@
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$4;
 
-    const v2, 0x10802ef
+    const v2, #android:drawable@ic_lock_reboot#t
 
-    const v3, 0x104003b
+    const v3, #android:string@global_action_reboot#t
 
     invoke-direct {v1, p0, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$4;-><init>(Lcom/android/internal/policy/impl/GlobalActions;II)V
 
@@ -1056,14 +1057,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 332
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mItems:Ljava/util/ArrayList;
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mMobileDataOn:Lcom/android/internal/policy/impl/GlobalActions$ToggleAction;
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 336
     :cond_0
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mContext:Landroid/content/Context;
 
@@ -1084,9 +1083,9 @@
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$5;
 
-    const v2, 0x10802f3
+    const v2, #android:drawable@ic_lock_screenshot#t
 
-    const v3, 0x1040050
+    const v3, #android:string@global_action_screenshot#t
 
     invoke-direct {v1, p0, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$5;-><init>(Lcom/android/internal/policy/impl/GlobalActions;II)V
 
@@ -1118,9 +1117,9 @@
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$6;
 
-    const v2, 0x10802f2
+    const v2, #android:drawable@ic_lock_screen_record#t
 
-    const v3, 0x1040051
+    const v3, #android:string@global_action_screenrecord#t
 
     invoke-direct {v1, p0, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$6;-><init>(Lcom/android/internal/policy/impl/GlobalActions;II)V
 
@@ -1142,14 +1141,12 @@
 
     if-eqz v0, :cond_3
 
-    .line 390
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mItems:Ljava/util/ArrayList;
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mAirplaneModeOn:Lcom/android/internal/policy/impl/GlobalActions$ToggleAction;
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 395
     :cond_3
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mContext:Landroid/content/Context;
 
@@ -1176,9 +1173,9 @@
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$7;
 
-    const v2, 0x10805b4
+    const v2, #android:drawable@stat_sys_adb#t
 
-    const v3, 0x10400e0
+    const v3, #android:string@global_action_bug_report#t
 
     invoke-direct {v1, p0, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$7;-><init>(Lcom/android/internal/policy/impl/GlobalActions;II)V
 

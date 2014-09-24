@@ -354,7 +354,8 @@
     .locals 1
 
     .prologue
-    .line 3627
+    invoke-static {}, Landroid/widget/Editor$BaiduEditorInjector;->dismiss()V
+
     iget-object v0, p0, Landroid/widget/Editor$SelectionModifierCursorController;->mStartHandle:Landroid/widget/Editor$SelectionStartHandleView;
 
     if-eqz v0, :cond_0
@@ -363,7 +364,6 @@
 
     invoke-virtual {v0}, Landroid/widget/Editor$SelectionStartHandleView;->hide()V
 
-    .line 3628
     :cond_0
     iget-object v0, p0, Landroid/widget/Editor$SelectionModifierCursorController;->mEndHandle:Landroid/widget/Editor$SelectionEndHandleView;
 
@@ -373,7 +373,6 @@
 
     invoke-virtual {v0}, Landroid/widget/Editor$SelectionEndHandleView;->hide()V
 
-    .line 3629
     :cond_1
     return-void
 .end method
@@ -382,7 +381,7 @@
     .locals 1
 
     .prologue
-    .line 3727
+    .line 3627
     iget-object v0, p0, Landroid/widget/Editor$SelectionModifierCursorController;->mStartHandle:Landroid/widget/Editor$SelectionStartHandleView;
 
     if-eqz v0, :cond_0
@@ -400,6 +399,7 @@
     :goto_0
     return v0
 
+    .line 3628
     :cond_0
     const/4 v0, 0x0
 
@@ -410,7 +410,6 @@
     .locals 2
 
     .prologue
-    .line 3738
     iget-object v1, p0, Landroid/widget/Editor$SelectionModifierCursorController;->this$0:Landroid/widget/Editor;
 
     #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
@@ -422,11 +421,9 @@
 
     move-result-object v0
 
-    .line 3739
     .local v0, observer:Landroid/view/ViewTreeObserver;
     invoke-virtual {v0, p0}, Landroid/view/ViewTreeObserver;->removeOnTouchModeChangeListener(Landroid/view/ViewTreeObserver$OnTouchModeChangeListener;)V
 
-    .line 3741
     iget-object v1, p0, Landroid/widget/Editor$SelectionModifierCursorController;->mStartHandle:Landroid/widget/Editor$SelectionStartHandleView;
 
     if-eqz v1, :cond_0
@@ -435,7 +432,6 @@
 
     invoke-virtual {v1}, Landroid/widget/Editor$SelectionStartHandleView;->onDetached()V
 
-    .line 3742
     :cond_0
     iget-object v1, p0, Landroid/widget/Editor$SelectionModifierCursorController;->mEndHandle:Landroid/widget/Editor$SelectionEndHandleView;
 
@@ -445,7 +441,7 @@
 
     invoke-virtual {v1}, Landroid/widget/Editor$SelectionEndHandleView;->onDetached()V
 
-    .line 3743
+    .line 3629
     :cond_1
     return-void
 .end method
@@ -455,32 +451,28 @@
     .parameter "event"
 
     .prologue
-    .line 3634
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v11
 
     packed-switch v11, :pswitch_data_0
 
-    .line 3697
+    .line 3742
     :cond_0
     :goto_0
     :pswitch_0
     return-void
 
-    .line 3636
     :pswitch_1
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getX()F
 
     move-result v9
 
-    .line 3637
     .local v9, x:F
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getY()F
 
     move-result v10
 
-    .line 3640
     .local v10, y:F
     iget-object v11, p0, Landroid/widget/Editor$SelectionModifierCursorController;->this$0:Landroid/widget/Editor;
 

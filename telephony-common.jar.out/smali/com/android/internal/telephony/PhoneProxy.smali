@@ -86,14 +86,13 @@
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mResetModemOnRadioTechnologyChange:Z
 
-    .line 72
-    new-instance v1, Lcom/android/internal/telephony/IccSmsInterfaceManager;
+    new-instance v1, Lcom/android/internal/telephony/IccSmsInterfaceManagerBaidu;
 
     iget-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mActivePhone:Lcom/android/internal/telephony/Phone;
 
     check-cast v0, Lcom/android/internal/telephony/PhoneBase;
 
-    invoke-direct {v1, v0}, Lcom/android/internal/telephony/IccSmsInterfaceManager;-><init>(Lcom/android/internal/telephony/PhoneBase;)V
+    invoke-direct {v1, v0}, Lcom/android/internal/telephony/IccSmsInterfaceManagerBaidu;-><init>(Lcom/android/internal/telephony/PhoneBase;)V
 
     iput-object v1, p0, Lcom/android/internal/telephony/PhoneProxy;->mIccSmsInterfaceManager:Lcom/android/internal/telephony/IccSmsInterfaceManager;
 
@@ -108,14 +107,13 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mIccPhoneBookInterfaceManagerProxy:Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;
 
-    .line 76
-    new-instance v0, Lcom/android/internal/telephony/PhoneSubInfoProxy;
+    new-instance v0, Lcom/android/internal/telephony/BaiduExtPhoneSubInfo;
 
     invoke-virtual {p1}, Lcom/android/internal/telephony/PhoneBase;->getPhoneSubInfo()Lcom/android/internal/telephony/PhoneSubInfo;
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/PhoneSubInfoProxy;-><init>(Lcom/android/internal/telephony/PhoneSubInfo;)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/BaiduExtPhoneSubInfo;-><init>(Lcom/android/internal/telephony/PhoneSubInfo;)V
 
     iput-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mPhoneSubInfoProxy:Lcom/android/internal/telephony/PhoneSubInfoProxy;
 
@@ -465,7 +463,7 @@
 
     move-result-object v3
 
-    const v4, 0x10e0034
+    const v4, #android:integer@config_volte_replacement_rat#t
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getInteger(I)I
 

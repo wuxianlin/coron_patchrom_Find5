@@ -764,35 +764,29 @@
 
     if-eqz v3, :cond_1
 
-    .line 169
     monitor-exit p0
 
     move-object v13, v7
 
-    .line 218
     :goto_1
     return-object v13
 
-    .line 162
     .end local v7           #r:Landroid/content/res/Resources;
     :cond_0
     const/4 v7, 0x0
 
     goto :goto_0
 
-    .line 171
     .restart local v7       #r:Landroid/content/res/Resources;
     :cond_1
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 178
-    new-instance v8, Landroid/content/res/AssetManager;
+    new-instance v8, Landroid/content/res/BaiduAssetManager;
 
-    invoke-direct {v8}, Landroid/content/res/AssetManager;-><init>()V
+    invoke-direct {v8}, Landroid/content/res/BaiduAssetManager;-><init>()V
 
-    .line 179
     .local v8, assets:Landroid/content/res/AssetManager;
     move-object/from16 v0, p1
 
@@ -884,14 +878,14 @@
     .line 199
     :cond_5
     :goto_3
-    new-instance v7, Landroid/content/res/Resources;
+    new-instance v7, Landroid/content/res/BaiduResources;
 
     .end local v7           #r:Landroid/content/res/Resources;
     move-object/from16 v11, p4
 
     move-object/from16 v12, p5
 
-    invoke-direct/range {v7 .. v12}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;)V
+    invoke-direct/range {v7 .. v12}, Landroid/content/res/BaiduResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;)V
 
     .line 206
     .restart local v7       #r:Landroid/content/res/Resources;

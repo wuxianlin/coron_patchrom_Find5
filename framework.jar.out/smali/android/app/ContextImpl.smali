@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/ContextImpl$BaiduApplicationContentResolver;,
         Landroid/app/ContextImpl$ApplicationContentResolver;,
         Landroid/app/ContextImpl$StaticServiceFetcher;,
         Landroid/app/ContextImpl$ServiceFetcher;
@@ -4940,39 +4941,31 @@
 
     iput-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
 
-    .line 2049
     :goto_2
     iput-object p3, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
 
-    .line 2050
     iput-object p2, p0, Landroid/app/ContextImpl;->mActivityToken:Landroid/os/IBinder;
 
-    .line 2051
-    new-instance v0, Landroid/app/ContextImpl$ApplicationContentResolver;
+    new-instance v0, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
 
-    invoke-direct {v0, p0, p3, p6}, Landroid/app/ContextImpl$ApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+    invoke-direct {v0, p0, p3, p6}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
 
     iput-object v0, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
 
-    .line 2052
     iput-object p6, p0, Landroid/app/ContextImpl;->mUser:Landroid/os/UserHandle;
 
-    .line 2053
     return-void
 
-    .line 2013
     .end local v4           #compatInfo:Landroid/content/res/CompatibilityInfo;
     :cond_3
     iget-object v0, p1, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
 
-    .line 2014
     invoke-virtual {p1}, Landroid/app/LoadedApk;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object v6
 
-    .line 2015
     .local v6, ainfo:Landroid/content/pm/ApplicationInfo;
     iget v0, v6, Landroid/content/pm/ApplicationInfo;->uid:I
 
@@ -5042,32 +5035,24 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 2056
     iput-object v0, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
 
-    .line 2057
     iput-object v0, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
 
-    .line 2058
     iput-object v0, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
 
-    .line 2059
     iput-object p1, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
 
-    .line 2060
     iput-object p2, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
 
-    .line 2061
-    new-instance v0, Landroid/app/ContextImpl$ApplicationContentResolver;
+    new-instance v0, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
 
-    invoke-direct {v0, p0, p2, p3}, Landroid/app/ContextImpl$ApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+    invoke-direct {v0, p0, p2, p3}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
 
     iput-object v0, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
 
-    .line 2062
     iput-object p3, p0, Landroid/app/ContextImpl;->mUser:Landroid/os/UserHandle;
 
-    .line 2063
     return-void
 .end method
 

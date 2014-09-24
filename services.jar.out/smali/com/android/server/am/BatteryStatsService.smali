@@ -741,7 +741,7 @@
 
     const/4 v4, 0x0
 
-    invoke-virtual {v2, v3, v4}, Landroid/content/Context;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v2, v3, v4}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 100
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
@@ -2562,7 +2562,7 @@
 
     move-result-object v1
 
-    const v2, 0x10e000c
+    const v2, #android:integer@config_radioScanningTimeout#t
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getInteger(I)I
 

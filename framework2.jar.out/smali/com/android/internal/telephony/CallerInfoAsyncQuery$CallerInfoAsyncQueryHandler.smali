@@ -303,7 +303,7 @@
 
     iget-object v0, v0, Lcom/android/internal/telephony/CallerInfo;->name:Ljava/lang/String;
 
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-direct {p0, v0}, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CallerInfoAsyncQueryHandler;->isEmptyHook(Ljava/lang/CharSequence;)Z
 
     move-result v0
 
@@ -316,7 +316,7 @@
 
     iget-object v4, v8, Lcom/android/internal/telephony/CallerInfoAsyncQuery$CookieWrapper;->number:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, v4}, Lcom/android/internal/telephony/CallerInfo;->updateGeoDescription(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v4}, Lcom/android/internal/telephony/CallerInfo;->updateGeoDescriptionAndLabel(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 272
     :cond_a
@@ -350,4 +350,14 @@
     iput-object v1, v0, Lcom/android/internal/telephony/CallerInfo;->phoneNumber:Ljava/lang/String;
 
     goto :goto_1
+.end method
+
+.method private isEmptyHook(Ljava/lang/CharSequence;)Z
+    .locals 1
+    .parameter "str"
+
+    .prologue
+    const/4 v0, 0x1
+
+    return v0
 .end method

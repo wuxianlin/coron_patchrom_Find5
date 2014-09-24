@@ -21,6 +21,8 @@
 
 .field private final mExternalDirsForVold:[Ljava/io/File;
 
+.field private mSecondaryStorage:Ljava/io/File;
+
 
 # direct methods
 .method public constructor <init>(I)V
@@ -783,6 +785,15 @@
     .prologue
     .line 195
     iget-object v0, p0, Landroid/os/Environment$UserEnvironment;->mEmulatedDirForDirect:Ljava/io/File;
+
+    return-object v0
+.end method
+
+.method public getSecondaryExternalStorageDirectory()Ljava/io/File;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/os/Environment$UserEnvironment;->mSecondaryStorage:Ljava/io/File;
 
     return-object v0
 .end method

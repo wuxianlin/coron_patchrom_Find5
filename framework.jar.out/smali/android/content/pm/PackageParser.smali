@@ -11618,9 +11618,9 @@
     .line 768
     .local v23, assmgr:Landroid/content/res/AssetManager;
     :try_start_0
-    new-instance v5, Landroid/content/res/AssetManager;
+    new-instance v5, Landroid/content/res/BaiduAssetManager;
 
-    invoke-direct {v5}, Landroid/content/res/AssetManager;-><init>()V
+    invoke-direct {v5}, Landroid/content/res/BaiduAssetManager;-><init>()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -11664,39 +11664,32 @@
 
     invoke-virtual/range {v5 .. v22}, Landroid/content/res/AssetManager;->setConfiguration(IILjava/lang/String;IIIIIIIIIIIIII)V
 
-    .line 772
     move-object/from16 v0, p0
 
     invoke-virtual {v5, v0}, Landroid/content/res/AssetManager;->addAssetPath(Ljava/lang/String;)I
 
     move-result v25
 
-    .line 773
     .local v25, cookie:I
     if-nez v25, :cond_1
 
-    .line 774
     const/16 v29, 0x0
 
-    .line 805
     .end local v25           #cookie:I
     :cond_0
     :goto_0
     return-object v29
 
-    .line 777
     .restart local v25       #cookie:I
     :cond_1
     new-instance v28, Landroid/util/DisplayMetrics;
 
     invoke-direct/range {v28 .. v28}, Landroid/util/DisplayMetrics;-><init>()V
 
-    .line 778
     .local v28, metrics:Landroid/util/DisplayMetrics;
     invoke-virtual/range {v28 .. v28}, Landroid/util/DisplayMetrics;->setToDefaults()V
 
-    .line 779
-    new-instance v31, Landroid/content/res/Resources;
+    new-instance v31, Landroid/content/res/BaiduResources;
 
     const/4 v6, 0x0
 
@@ -11704,7 +11697,7 @@
 
     move-object/from16 v1, v28
 
-    invoke-direct {v0, v5, v1, v6}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
+    invoke-direct {v0, v5, v1, v6}, Landroid/content/res/BaiduResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
 
     .line 780
     .local v31, res:Landroid/content/res/Resources;
@@ -12072,6 +12065,14 @@
 
     if-nez v4, :cond_6
 
+    const-string v4, "yi"
+
+    invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_baidu_0
+
     .line 861
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -12107,6 +12108,7 @@
 
     .line 866
     :cond_6
+    :cond_baidu_0
     invoke-virtual {v1}, Ljava/lang/String;->intern()Ljava/lang/String;
 
     move-result-object v3
@@ -16741,9 +16743,9 @@
     .line 522
     .local v23, assetError:Z
     :try_start_0
-    new-instance v5, Landroid/content/res/AssetManager;
+    new-instance v5, Landroid/content/res/BaiduAssetManager;
 
-    invoke-direct {v5}, Landroid/content/res/AssetManager;-><init>()V
+    invoke-direct {v5}, Landroid/content/res/BaiduAssetManager;-><init>()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
 
@@ -16759,12 +16761,10 @@
 
     move-result v25
 
-    .line 524
     .local v25, cookie:I
     if-eqz v25, :cond_4
 
-    .line 525
-    new-instance v32, Landroid/content/res/Resources;
+    new-instance v32, Landroid/content/res/BaiduResources;
 
     const/4 v6, 0x0
 
@@ -16772,7 +16772,7 @@
 
     move-object/from16 v1, p3
 
-    invoke-direct {v0, v5, v1, v6}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
+    invoke-direct {v0, v5, v1, v6}, Landroid/content/res/BaiduResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
