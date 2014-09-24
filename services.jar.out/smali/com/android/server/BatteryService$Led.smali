@@ -27,6 +27,12 @@
 
 .field private final mBatteryLight:Lcom/android/server/LightsService$Light;
 
+.field private final mBatteryLowARGB:I
+
+.field private final mBatteryMediumARGB:I
+
+.field private mObserver:Lcom/android/server/BatteryService$Led$SettingsObserver;
+
 .field final synthetic this$0:Lcom/android/server/BatteryService;
 
 
@@ -133,6 +139,8 @@
     #setter for: Lcom/android/server/BatteryService;->mMultiColorLed:Z
     invoke-static {p1, v0}, Lcom/android/server/BatteryService;->access$702(Lcom/android/server/BatteryService;Z)Z
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/BatteryService$Led;->createSettingsObserver()V
+
     return-void
 .end method
 
@@ -142,6 +150,15 @@
     .locals 7
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/BatteryService$Led;->updateLightsLockedHook()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_baidu_0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
     const/4 v5, 0x5
 
     const/4 v6, 0x1
@@ -166,6 +183,7 @@
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
     :goto_0
+    :goto_baidu_0
     return-void
 
     :cond_0

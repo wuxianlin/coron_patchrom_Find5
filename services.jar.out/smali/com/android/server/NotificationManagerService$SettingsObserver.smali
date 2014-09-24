@@ -223,6 +223,15 @@
     .parameter "uri"
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/NotificationManagerService$SettingsObserver;->updateHook()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_baidu_0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
     const/4 v2, 0x1
 
     const/4 v3, 0x0
@@ -391,6 +400,7 @@
 
     .line 1402
     :cond_2
+    :goto_baidu_0
     return-void
 
     :cond_3

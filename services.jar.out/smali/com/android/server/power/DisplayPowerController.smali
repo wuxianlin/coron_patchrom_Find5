@@ -4940,7 +4940,7 @@
 
     move-object/from16 v0, p0
 
-    invoke-direct {v0, v3}, Lcom/android/server/power/DisplayPowerController;->clampScreenBrightness(I)I
+    invoke-direct {v0, v3}, Lcom/android/server/power/DisplayPowerController;->clampScreenBrightnessBaidu(I)I
 
     move-result v13
 
