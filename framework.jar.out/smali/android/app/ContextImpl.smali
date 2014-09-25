@@ -5064,11 +5064,11 @@
 
     iput-object p2, p0, Landroid/app/ContextImpl;->mActivityToken:Landroid/os/IBinder;
 
-    new-instance v1, Landroid/app/ContextImpl$ApplicationContentResolver;
+    new-instance v1, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
 
     move-object/from16 v0, p6
 
-    invoke-direct {v1, p0, p3, v0}, Landroid/app/ContextImpl$ApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+    invoke-direct {v1, p0, p3, v0}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
 
     iput-object v1, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
 

@@ -180,7 +180,7 @@
     throw v0
 .end method
 
-.method private constructor <init>(Z)V
+.method constructor <init>(Z)V
     .locals 3
     .parameter "isSystem"
 

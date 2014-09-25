@@ -86,6 +86,10 @@
 
 .field public static final SUBSCRIPTION:Ljava/lang/String; = "subscription"
 
+.field public static final RECORDPATH:Ljava/lang/String; = "record_url"
+
+.field public static final RINGONCE:Ljava/lang/String; = "ringonce"
+
 .field public static final TYPE:Ljava/lang/String; = "type"
 
 .field public static final VOICEMAIL_TYPE:I = 0x4

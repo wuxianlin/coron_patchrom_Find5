@@ -2066,9 +2066,9 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 195
-    new-instance v9, Landroid/content/res/AssetManager;
+    new-instance v9, Landroid/content/res/BaiduAssetManager;
 
-    invoke-direct {v9}, Landroid/content/res/AssetManager;-><init>()V
+    invoke-direct {v9}, Landroid/content/res/BaiduAssetManager;-><init>()V
 
     .line 196
     .local v9, assets:Landroid/content/res/AssetManager;
@@ -2241,14 +2241,14 @@
 
     .line 237
     :cond_7
-    new-instance v8, Landroid/content/res/Resources;
+    new-instance v8, Landroid/content/res/BaiduResources;
 
     .end local v8           #r:Landroid/content/res/Resources;
     move-object/from16 v12, p6
 
     move-object/from16 v13, p7
 
-    invoke-direct/range {v8 .. v13}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;)V
+    invoke-direct/range {v8 .. v13}, Landroid/content/res/BaiduResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;)V
 
     .line 238
     .restart local v8       #r:Landroid/content/res/Resources;
