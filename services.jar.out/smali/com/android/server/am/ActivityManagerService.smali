@@ -77531,6 +77531,149 @@
     throw v1
 .end method
 
+.method public static final main(I)Landroid/content/Context;
+    .locals 7
+    .parameter "factoryTest"
+
+    .prologue
+    const/4 v6, 0x0
+
+    new-instance v3, Lcom/android/server/am/ActivityManagerService$AThread;
+
+    invoke-direct {v3}, Lcom/android/server/am/ActivityManagerService$AThread;-><init>()V
+
+    .local v3, thr:Lcom/android/server/am/ActivityManagerService$AThread;
+    invoke-virtual {v3}, Ljava/lang/Thread;->start()V
+
+    monitor-enter v3
+
+    :goto_0
+    :try_start_0
+    iget-object v4, v3, Lcom/android/server/am/ActivityManagerService$AThread;->mService:Lcom/android/server/am/ActivityManagerService;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    if-nez v4, :cond_0
+
+    :try_start_1
+    invoke-virtual {v3}, Ljava/lang/Object;->wait()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v4
+
+    goto :goto_0
+
+    :cond_0
+    :try_start_2
+    monitor-exit v3
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    iget-object v2, v3, Lcom/android/server/am/ActivityManagerService$AThread;->mService:Lcom/android/server/am/ActivityManagerService;
+
+    .local v2, m:Lcom/android/server/am/ActivityManagerService;
+    sput-object v2, Lcom/android/server/am/ActivityManagerService;->mSelf:Lcom/android/server/am/ActivityManagerService;
+
+    invoke-static {}, Landroid/app/ActivityThread;->systemMain()Landroid/app/ActivityThread;
+
+    move-result-object v0
+
+    .local v0, at:Landroid/app/ActivityThread;
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->mSystemThread:Landroid/app/ActivityThread;
+
+    invoke-virtual {v0}, Landroid/app/ActivityThread;->getSystemContext()Landroid/app/ContextImpl;
+
+    move-result-object v1
+
+    .local v1, context:Landroid/content/Context;
+    const v4, #android:style@Theme.DeviceDefault.Light#t
+
+    invoke-virtual {v1, v4}, Landroid/content/Context;->setTheme(I)V
+
+    iput-object v1, v2, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    iput p0, v2, Lcom/android/server/am/ActivityManagerService;->mFactoryTest:I
+
+    new-instance v4, Lcom/android/server/firewall/IntentFirewall;
+
+    new-instance v5, Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;
+
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    invoke-direct {v5, v2}, Lcom/android/server/am/ActivityManagerService$IntentFirewallInterface;-><init>(Lcom/android/server/am/ActivityManagerService;)V
+
+    invoke-direct {v4, v5}, Lcom/android/server/firewall/IntentFirewall;-><init>(Lcom/android/server/firewall/IntentFirewall$AMSInterface;)V
+
+    iput-object v4, v2, Lcom/android/server/am/ActivityManagerService;->mIntentFirewall:Lcom/android/server/firewall/IntentFirewall;
+
+    new-instance v4, Lcom/android/server/am/ActivityStackSupervisor;
+
+    iget-object v5, v3, Lcom/android/server/am/ActivityManagerService$AThread;->mLooper:Landroid/os/Looper;
+
+    invoke-direct {v4, v2, v1, v5}, Lcom/android/server/am/ActivityStackSupervisor;-><init>(Lcom/android/server/am/ActivityManagerService;Landroid/content/Context;Landroid/os/Looper;)V
+
+    iput-object v4, v2, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
+
+    iget-object v4, v2, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
+
+    invoke-virtual {v4, v1}, Lcom/android/server/am/BatteryStatsService;->publish(Landroid/content/Context;)V
+
+    iget-object v4, v2, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Lcom/android/server/am/UsageStatsService;
+
+    invoke-virtual {v4, v1}, Lcom/android/server/am/UsageStatsService;->publish(Landroid/content/Context;)V
+
+    iget-object v4, v2, Lcom/android/server/am/ActivityManagerService;->mAppOpsService:Lcom/android/server/AppOpsService;
+
+    invoke-virtual {v4, v1}, Lcom/android/server/AppOpsService;->publish(Landroid/content/Context;)V
+
+    monitor-enter v3
+
+    const/4 v4, 0x1
+
+    :try_start_3
+    iput-boolean v4, v3, Lcom/android/server/am/ActivityManagerService$AThread;->mReady:Z
+
+    invoke-virtual {v3}, Ljava/lang/Object;->notifyAll()V
+
+    monitor-exit v3
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    invoke-virtual {v2, v6, v6, v6, v6}, Lcom/android/server/am/ActivityManagerService;->startRunning(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    return-object v1
+
+    .end local v0           #at:Landroid/app/ActivityThread;
+    .end local v1           #context:Landroid/content/Context;
+    .end local v2           #m:Lcom/android/server/am/ActivityManagerService;
+    :catchall_0
+    move-exception v4
+
+    :try_start_4
+    monitor-exit v3
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+
+    throw v4
+
+    .restart local v0       #at:Landroid/app/ActivityThread;
+    .restart local v1       #context:Landroid/content/Context;
+    .restart local v2       #m:Lcom/android/server/am/ActivityManagerService;
+    :catchall_1
+    move-exception v4
+
+    :try_start_5
+    monitor-exit v3
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_1
+
+    throw v4
+.end method
 
 .method private killOrphanedProcess([ILjava/lang/String;)V
     .locals 4

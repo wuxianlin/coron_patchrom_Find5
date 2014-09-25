@@ -5698,6 +5698,192 @@
     goto :goto_0
 .end method
 
+.method private registerTransport(Ljava/lang/String;Lcom/android/internal/backup/IBackupTransport;)V
+    .locals 11
+    .parameter "name"
+    .parameter "transport"
+
+    .prologue
+    .line 1302
+    iget-object v6, p0, Lcom/android/server/BackupManagerService;->mTransports:Ljava/util/HashMap;
+
+    monitor-enter v6
+
+    .line 1303
+    :try_start_0
+    const-string v5, "BackupManagerService"
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "Registering transport "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string v8, " = "
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v5, v7}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 1304
+    if-eqz p2, :cond_1
+
+    .line 1305
+    iget-object v5, p0, Lcom/android/server/BackupManagerService;->mTransports:Ljava/util/HashMap;
+
+    invoke-virtual {v5, p1, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 1311
+    monitor-exit v6
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 1317
+    :try_start_1
+    invoke-interface {p2}, Lcom/android/internal/backup/IBackupTransport;->transportDirName()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 1318
+    .local v4, transportName:Ljava/lang/String;
+    new-instance v3, Ljava/io/File;
+
+    iget-object v5, p0, Lcom/android/server/BackupManagerService;->mBaseStateDir:Ljava/io/File;
+
+    invoke-direct {v3, v5, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    .line 1319
+    .local v3, stateDir:Ljava/io/File;
+    invoke-virtual {v3}, Ljava/io/File;->mkdirs()Z
+
+    .line 1321
+    new-instance v2, Ljava/io/File;
+
+    const-string v5, "_need_init_"
+
+    invoke-direct {v2, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    .line 1322
+    .local v2, initSentinel:Ljava/io/File;
+    invoke-virtual {v2}, Ljava/io/File;->exists()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    .line 1323
+    iget-object v6, p0, Lcom/android/server/BackupManagerService;->mQueueLock:Ljava/lang/Object;
+
+    monitor-enter v6
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
+
+    .line 1324
+    :try_start_2
+    iget-object v5, p0, Lcom/android/server/BackupManagerService;->mPendingInits:Ljava/util/HashSet;
+
+    invoke-virtual {v5, v4}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
+
+    .line 1327
+    const-wide/32 v0, 0xea60
+
+    .line 1328
+    .local v0, delay:J
+    iget-object v5, p0, Lcom/android/server/BackupManagerService;->mAlarmManager:Landroid/app/AlarmManager;
+
+    const/4 v7, 0x0
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v8
+
+    add-long/2addr v8, v0
+
+    iget-object v10, p0, Lcom/android/server/BackupManagerService;->mRunInitIntent:Landroid/app/PendingIntent;
+
+    invoke-virtual {v5, v7, v8, v9, v10}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V
+
+    .line 1330
+    monitor-exit v6
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    .line 1335
+    .end local v0           #delay:J
+    .end local v2           #initSentinel:Ljava/io/File;
+    .end local v3           #stateDir:Ljava/io/File;
+    .end local v4           #transportName:Ljava/lang/String;
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 1307
+    :cond_1
+    :try_start_3
+    iget-object v5, p0, Lcom/android/server/BackupManagerService;->mTransports:Ljava/util/HashMap;
+
+    invoke-virtual {v5, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 1309
+    monitor-exit v6
+
+    goto :goto_0
+
+    .line 1311
+    :catchall_0
+    move-exception v5
+
+    monitor-exit v6
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    throw v5
+
+    .line 1330
+    .restart local v2       #initSentinel:Ljava/io/File;
+    .restart local v3       #stateDir:Ljava/io/File;
+    .restart local v4       #transportName:Ljava/lang/String;
+    :catchall_1
+    move-exception v5
+
+    :try_start_4
+    monitor-exit v6
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+
+    :try_start_5
+    throw v5
+    :try_end_5
+    .catch Landroid/os/RemoteException; {:try_start_5 .. :try_end_5} :catch_0
+
+    .line 1332
+    .end local v2           #initSentinel:Ljava/io/File;
+    .end local v3           #stateDir:Ljava/io/File;
+    .end local v4           #transportName:Ljava/lang/String;
+    :catch_0
+    move-exception v5
+
+    goto :goto_0
+.end method
+
 .method private removePackageFromSetLocked(Ljava/util/HashSet;Ljava/lang/String;)V
     .locals 1
     .parameter
