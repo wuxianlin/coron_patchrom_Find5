@@ -12806,6 +12806,12 @@
     goto :goto_3
 
     :cond_6
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p2
+
+    invoke-static {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->longPressKiller(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/KeyEvent;)V
+
     const/16 v35, 0x18
 
     move/from16 v0, v17

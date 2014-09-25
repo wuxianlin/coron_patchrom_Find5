@@ -2532,7 +2532,7 @@
     .parameter "x0"
 
     .prologue
-    iget-boolean v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mKeyguardShowing:Z
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mKeyguardLocked:Z
 
     return v0
 .end method
