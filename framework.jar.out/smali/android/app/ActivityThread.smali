@@ -19077,7 +19077,7 @@
     .parameter "x4"
 
     .prologue
-    invoke-direct {p0, p1, p2, p3, p4}, Landroid/app/ActivityThread;->queueOrSendMessage(ILjava/lang/Object;II)V
+    invoke-direct {p0, p1, p2, p3, p4}, Landroid/app/ActivityThread;->sendMessage(ILjava/lang/Object;II)V
 
     return-void
 .end method
@@ -19089,7 +19089,7 @@
     .parameter "x2"
 
     .prologue
-    invoke-direct {p0, p1, p2}, Landroid/app/ActivityThread;->queueOrSendMessage(ILjava/lang/Object;)V
+    invoke-direct {p0, p1, p2}, Landroid/app/ActivityThread;->sendMessage(ILjava/lang/Object;)V
 
     return-void
 .end method
@@ -19102,7 +19102,7 @@
     .parameter "x3"
 
     .prologue
-    invoke-direct {p0, p1, p2, p3}, Landroid/app/ActivityThread;->queueOrSendMessage(ILjava/lang/Object;I)V
+    invoke-direct {p0, p1, p2, p3}, Landroid/app/ActivityThread;->sendMessage(ILjava/lang/Object;I)V
 
     return-void
 .end method
