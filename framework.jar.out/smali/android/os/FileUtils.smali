@@ -489,6 +489,9 @@
     goto :goto_0
 .end method
 
+.method public static native getFatVolumeId(Ljava/lang/String;)I
+.end method
+
 .method public static getUid(Ljava/lang/String;)I
     .locals 2
     .parameter "path"
