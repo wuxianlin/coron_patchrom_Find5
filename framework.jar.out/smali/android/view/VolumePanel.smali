@@ -1869,7 +1869,7 @@
     if-nez v1, :cond_0
 
     .line 521
-    invoke-direct {p0}, Landroid/view/VolumePanel;->createSliders()V
+    invoke-virtual {p0}, Landroid/view/VolumePanel;->createSliders()V
 
     .line 523
     :cond_0
