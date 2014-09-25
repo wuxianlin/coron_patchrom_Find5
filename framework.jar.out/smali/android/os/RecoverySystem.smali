@@ -506,12 +506,10 @@
     .end annotation
 
     .prologue
-    .line 333
-    invoke-virtual {p1}, Ljava/io/File;->getCanonicalPath()Ljava/lang/String;
+    invoke-virtual {p1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 334
     .local v1, filename:Ljava/lang/String;
     const-string v2, "RecoverySystem"
 

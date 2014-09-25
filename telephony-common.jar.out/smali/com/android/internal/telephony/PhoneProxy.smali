@@ -87,10 +87,8 @@
 
     iput-boolean v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mRilV7NeedsCDMALTEPhone:Z
 
-    .line 74
     iput-object p1, p0, Lcom/android/internal/telephony/PhoneProxy;->mActivePhone:Lcom/android/internal/telephony/Phone;
 
-    .line 75
     const-string v0, "persist.radio.reset_on_switch"
 
     invoke-static {v0, v1}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
@@ -110,14 +108,13 @@
 
     iput-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mIccPhoneBookInterfaceManagerProxy:Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;
 
-    .line 79
-    new-instance v0, Lcom/android/internal/telephony/PhoneSubInfoProxy;
+    new-instance v0, Lcom/android/internal/telephony/BaiduExtPhoneSubInfo;
 
     invoke-virtual {p1}, Lcom/android/internal/telephony/PhoneBase;->getPhoneSubInfo()Lcom/android/internal/telephony/PhoneSubInfo;
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/PhoneSubInfoProxy;-><init>(Lcom/android/internal/telephony/PhoneSubInfo;)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/BaiduExtPhoneSubInfo;-><init>(Lcom/android/internal/telephony/PhoneSubInfo;)V
 
     iput-object v0, p0, Lcom/android/internal/telephony/PhoneProxy;->mPhoneSubInfoProxy:Lcom/android/internal/telephony/PhoneSubInfoProxy;
 
@@ -2468,7 +2465,7 @@
 
     move-result-object v2
 
-    const v3, 0x10e0036
+    const v3, #android:integer@config_volte_replacement_rat#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
