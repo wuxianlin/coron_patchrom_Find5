@@ -4555,6 +4555,16 @@
     .locals 10
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/NotificationManagerService;->updateLightsLockedHook()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_baidu_0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
+
     iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mLedNotification:Lcom/android/server/NotificationManagerService$NotificationRecord;
 
     if-nez v8, :cond_2
@@ -4632,6 +4642,7 @@
 
     :cond_3
     :goto_2
+    :goto_baidu_0
     return-void
 
     .end local v0           #enableLed:Z
