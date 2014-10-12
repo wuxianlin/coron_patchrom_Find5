@@ -1880,7 +1880,7 @@
 
     iget-wide v6, v2, Lcom/android/server/AlarmManagerService$Batch;->start:J
 
-    invoke-direct {p0, v5, v6, v7}, Lcom/android/server/AlarmManagerService;->setLocked(IJ)V
+    invoke-direct {p0, v5, v6, v7}, Lcom/android/server/AlarmManagerService;->setLockedBaidu(IJ)V
 
     :cond_0
     if-eq v0, v2, :cond_1

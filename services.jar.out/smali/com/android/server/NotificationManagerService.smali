@@ -7,6 +7,7 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/server/NotificationManagerService$FilterCacheInfo;,
+        Lcom/android/server/NotificationManagerService$BaiduLedInjector;,
         Lcom/android/server/NotificationManagerService$WorkerHandler;,
         Lcom/android/server/NotificationManagerService$QuietHoursSettingsObserver;,
         Lcom/android/server/NotificationManagerService$LEDSettingsObserver;,
@@ -4870,6 +4871,15 @@
     .locals 10
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/NotificationManagerService;->updateLightsLockedHook()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_baidu_0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
     iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mLedNotification:Lcom/android/server/NotificationManagerService$NotificationRecord;
 
     if-nez v8, :cond_2
@@ -4947,6 +4957,7 @@
 
     :cond_3
     :goto_2
+    :goto_baidu_0
     return-void
 
     .end local v0           #enableLed:Z
@@ -8987,7 +8998,7 @@
     .parameter "x0"
 
     .prologue
-    iget-object v0, p0, Lcom/android/server/NotificationManagerService;->mSettingsObserver:Lcom/android/server/NotificationManagerService$SettingsObserver;
+    iget-object v0, p0, Lcom/android/server/NotificationManagerService;->mSettingsObserver:Lcom/android/server/NotificationManagerService$LEDSettingsObserver;
 
     return-object v0
 .end method
