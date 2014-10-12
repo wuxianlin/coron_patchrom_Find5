@@ -1544,6 +1544,69 @@
     return-void
 .end method
 
+.method setUserState(IIZZZZLjava/lang/String;Ljava/util/HashSet;Ljava/util/HashSet;)V
+    .locals 1
+    .parameter "userId"
+    .parameter "enabled"
+    .parameter "installed"
+    .parameter "stopped"
+    .parameter "notLaunched"
+    .parameter "blocked"
+    .parameter "lastDisableAppCaller"
+    .parameter
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(IIZZZZ",
+            "Ljava/lang/String;",
+            "Ljava/util/HashSet",
+            "<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/HashSet",
+            "<",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 275
+    .local p8, enabledComponents:Ljava/util/HashSet;,"Ljava/util/HashSet<Ljava/lang/String;>;"
+    .local p9, disabledComponents:Ljava/util/HashSet;,"Ljava/util/HashSet<Ljava/lang/String;>;"
+    invoke-direct {p0, p1}, Lcom/android/server/pm/PackageSettingBase;->modifyUserState(I)Landroid/content/pm/PackageUserState;
+
+    move-result-object v0
+
+    .line 276
+    .local v0, state:Landroid/content/pm/PackageUserState;
+    iput p2, v0, Landroid/content/pm/PackageUserState;->enabled:I
+
+    .line 277
+    iput-boolean p3, v0, Landroid/content/pm/PackageUserState;->installed:Z
+
+    .line 278
+    iput-boolean p4, v0, Landroid/content/pm/PackageUserState;->stopped:Z
+
+    .line 279
+    iput-boolean p5, v0, Landroid/content/pm/PackageUserState;->notLaunched:Z
+
+    .line 280
+    iput-boolean p6, v0, Landroid/content/pm/PackageUserState;->blocked:Z
+
+    .line 281
+    iput-object p7, v0, Landroid/content/pm/PackageUserState;->lastDisableAppCaller:Ljava/lang/String;
+
+    .line 282
+    iput-object p8, v0, Landroid/content/pm/PackageUserState;->enabledComponents:Ljava/util/HashSet;
+
+    .line 283
+    iput-object p9, v0, Landroid/content/pm/PackageUserState;->disabledComponents:Ljava/util/HashSet;
+
+    .line 284
+    return-void
+.end method
+
 .method setUserState(IIZZZZLjava/lang/String;Ljava/util/HashSet;Ljava/util/HashSet;Ljava/util/HashSet;Ljava/util/HashSet;)V
     .locals 1
     .parameter "userId"
