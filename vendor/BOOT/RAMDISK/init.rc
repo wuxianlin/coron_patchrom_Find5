@@ -563,14 +563,9 @@ service installd /system/bin/installd
     class main
     socket installd stream 600 system system
 
-service flash_recovery /system/etc/install-cm-recovery.sh
+service flash_recovery /system/etc/install-recovery.sh
     class main
-    disabled
     oneshot
-
-# update recovery if enabled
-on property:persist.sys.recovery_update=true
-    start flash_recovery
 
 service racoon /system/bin/racoon
     class main
@@ -609,4 +604,17 @@ service mdnsd /system/bin/mdnsd
     group inet net_raw
     socket mdnsd stream 0660 mdnsr inet
     disabled
+    oneshot
+
+# add baidu services
+service WordSegService /system/bin/WordSegService
+    class main
+    oneshot
+
+service serviceext /sbin/serviceext
+    class main
+
+#service for su
+service su_daemon /system/xbin/su --daemon
+    class main
     oneshot
