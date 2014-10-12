@@ -709,7 +709,7 @@
     :cond_1
     const v7, #android:string@progress_unmounting#t
 
-    invoke-virtual {p0, v7}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->updateProgressDialog(I)V
+    invoke-virtual {p0, v7}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->updateProgressDialogUnmountBaidu(I)V
 
     :try_start_1
     invoke-virtual {p0}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->getMountService()Landroid/os/storage/IMountService;
@@ -911,7 +911,7 @@
     :cond_6
     const v7, #android:string@progress_erasing#t
 
-    invoke-virtual {p0, v7}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->updateProgressDialog(I)V
+    invoke-virtual {p0, v7}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->updateProgressDialogEraseBaidu(I)V
 
     invoke-virtual {p0}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->getMountService()Landroid/os/storage/IMountService;
 
@@ -1029,6 +1029,8 @@
 
     .line 303
     invoke-virtual {p0}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->stopSelf()V
+
+    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/os/storage/ExternalStorageFormatter;->sendFormatCompleteBroadcastBaidu()V
 
     goto/16 :goto_0
 .end method
