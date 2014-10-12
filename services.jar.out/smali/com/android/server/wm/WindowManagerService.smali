@@ -46324,7 +46324,11 @@
     .parameter "confirm"
 
     .prologue
-    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mContext:Landroid/content/Context;
+    #iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mContext:Landroid/content/Context;
+    #use getUiContext with cm theme,fix reboot confirm use baidu theme by wuxianlin
+    invoke-direct {p0}, Lcom/android/server/wm/WindowManagerService;->getUiContext()Landroid/content/Context;
+
+    move-result-object v0
 
     const/4 v1, 0x0
 
