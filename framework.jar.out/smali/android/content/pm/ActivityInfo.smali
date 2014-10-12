@@ -43,6 +43,8 @@
 
 .field public static final CONFIG_THEME_RESOURCE:I = 0x8000
 
+.field public static final CONFIG_THEME:I = -0x80000000
+
 .field public static final CONFIG_TOUCHSCREEN:I = 0x8
 
 .field public static final CONFIG_UI_MODE:I = 0x200

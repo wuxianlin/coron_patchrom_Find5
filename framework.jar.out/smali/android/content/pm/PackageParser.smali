@@ -19064,9 +19064,9 @@
     .line 570
     .local v20, assetError:Z
     :try_start_0
-    new-instance v2, Landroid/content/res/AssetManager;
+    new-instance v2, Landroid/content/res/BaiduAssetManager;
 
-    invoke-direct {v2}, Landroid/content/res/AssetManager;-><init>()V
+    invoke-direct {v2}, Landroid/content/res/BaiduAssetManager;-><init>()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -19087,7 +19087,7 @@
     if-eqz v22, :cond_5
 
     .line 573
-    new-instance v31, Landroid/content/res/Resources;
+    new-instance v31, Landroid/content/res/BaiduResources;
 
     const/4 v3, 0x0
 
@@ -19095,7 +19095,7 @@
 
     move-object/from16 v1, p3
 
-    invoke-direct {v0, v2, v1, v3}, Landroid/content/res/Resources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
+    invoke-direct {v0, v2, v1, v3}, Landroid/content/res/BaiduResources;-><init>(Landroid/content/res/AssetManager;Landroid/util/DisplayMetrics;Landroid/content/res/Configuration;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
 

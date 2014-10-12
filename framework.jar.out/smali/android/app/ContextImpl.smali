@@ -726,11 +726,11 @@
 
     iput-object p3, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
 
-    new-instance v1, Landroid/app/ContextImpl$ApplicationContentResolver;
+    new-instance v1, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
 
     move-object/from16 v0, p5
 
-    invoke-direct {v1, p0, p2, v0}, Landroid/app/ContextImpl$ApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+    invoke-direct {v1, p0, p2, v0}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
 
     iput-object v1, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
 
@@ -7137,3 +7137,211 @@
 
     goto :goto_0
 .end method
+
+.method final init(Landroid/app/LoadedApk;Landroid/os/IBinder;Landroid/app/ActivityThread;Landroid/content/res/Resources;Ljava/lang/String;Landroid/os/UserHandle;)V
+    .locals 7
+    .parameter "packageInfo"
+    .parameter "activityToken"
+    .parameter "mainThread"
+    .parameter "container"
+    .parameter "basePackageName"
+    .parameter "user"
+
+    .prologue
+    const/4 v3, 0x0
+
+    iput-object p1, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    if-eqz p5, :cond_3
+
+    iput-object p5, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
+
+    iput-object p5, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
+
+    :goto_0
+    iget-object v0, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    invoke-virtual {v0, p3}, Landroid/app/LoadedApk;->getResources(Landroid/app/ActivityThread;)Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+
+    invoke-static {}, Landroid/app/ResourcesManager;->getInstance()Landroid/app/ResourcesManager;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mResourcesManager:Landroid/app/ResourcesManager;
+
+    if-nez p4, :cond_5
+
+    move-object v4, v3
+
+    .local v4, compatInfo:Landroid/content/res/CompatibilityInfo;
+    :goto_1
+    iget-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+
+    if-eqz v0, :cond_6
+
+    if-eqz v4, :cond_0
+
+    iget v0, v4, Landroid/content/res/CompatibilityInfo;->applicationScale:F
+
+    iget-object v1, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
+
+    move-result-object v1
+
+    iget v1, v1, Landroid/content/res/CompatibilityInfo;->applicationScale:F
+
+    cmpl-float v0, v0, v1
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    if-eqz p2, :cond_6
+
+    :cond_1
+    if-nez v4, :cond_2
+
+    invoke-virtual {p1}, Landroid/app/LoadedApk;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
+
+    move-result-object v4
+
+    :cond_2
+    iget-object v0, p0, Landroid/app/ContextImpl;->mDisplayAdjustments:Landroid/view/DisplayAdjustments;
+
+    invoke-virtual {v0, v4}, Landroid/view/DisplayAdjustments;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V
+
+    iget-object v0, p0, Landroid/app/ContextImpl;->mDisplayAdjustments:Landroid/view/DisplayAdjustments;
+
+    invoke-virtual {v0, p2}, Landroid/view/DisplayAdjustments;->setActivityToken(Landroid/os/IBinder;)V
+
+    iget-object v0, p0, Landroid/app/ContextImpl;->mResourcesManager:Landroid/app/ResourcesManager;
+
+    iget-object v1, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    invoke-virtual {v1}, Landroid/app/LoadedApk;->getResDir()Ljava/lang/String;
+
+    move-result-object v1
+
+    const/4 v2, 0x0
+
+    move-object v5, p2
+
+    invoke-virtual/range {v0 .. v5}, Landroid/app/ResourcesManager;->getTopLevelResources(Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Landroid/os/IBinder;)Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+
+    :goto_2
+    iput-object p3, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+
+    iput-object p2, p0, Landroid/app/ContextImpl;->mActivityToken:Landroid/os/IBinder;
+
+    new-instance v0, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
+
+    invoke-direct {v0, p0, p3, p6}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
+
+    iput-object p6, p0, Landroid/app/ContextImpl;->mUser:Landroid/os/UserHandle;
+
+    return-void
+
+    .end local v4           #compatInfo:Landroid/content/res/CompatibilityInfo;
+    :cond_3
+    iget-object v0, p1, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
+
+    invoke-virtual {p1}, Landroid/app/LoadedApk;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v6
+
+    .local v6, ainfo:Landroid/content/pm/ApplicationInfo;
+    iget v0, v6, Landroid/content/pm/ApplicationInfo;->uid:I
+
+    const/16 v1, 0x3e8
+
+    if-ne v0, v1, :cond_4
+
+    iget v0, v6, Landroid/content/pm/ApplicationInfo;->uid:I
+
+    invoke-static {}, Landroid/os/Process;->myUid()I
+
+    move-result v1
+
+    if-eq v0, v1, :cond_4
+
+    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
+
+    goto :goto_0
+
+    :cond_4
+    iget-object v0, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
+
+    goto :goto_0
+
+    .end local v6           #ainfo:Landroid/content/pm/ApplicationInfo;
+    :cond_5
+    invoke-virtual {p4}, Landroid/content/res/Resources;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
+
+    move-result-object v4
+
+    goto :goto_1
+
+    .restart local v4       #compatInfo:Landroid/content/res/CompatibilityInfo;
+    :cond_6
+    iget-object v0, p0, Landroid/app/ContextImpl;->mDisplayAdjustments:Landroid/view/DisplayAdjustments;
+
+    invoke-virtual {p1}, Landroid/app/LoadedApk;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/view/DisplayAdjustments;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V
+
+    iget-object v0, p0, Landroid/app/ContextImpl;->mDisplayAdjustments:Landroid/view/DisplayAdjustments;
+
+    invoke-virtual {v0, p2}, Landroid/view/DisplayAdjustments;->setActivityToken(Landroid/os/IBinder;)V
+
+    goto :goto_2
+.end method
+.method final init(Landroid/content/res/Resources;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+    .locals 1
+    .parameter "resources"
+    .parameter "mainThread"
+    .parameter "user"
+
+    .prologue
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mBasePackageName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mOpPackageName:Ljava/lang/String;
+
+    iput-object p1, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+
+    iput-object p2, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+
+    new-instance v0, Landroid/app/ContextImpl$BaiduApplicationContentResolver;
+
+    invoke-direct {v0, p0, p2, p3}, Landroid/app/ContextImpl$BaiduApplicationContentResolver;-><init>(Landroid/content/Context;Landroid/app/ActivityThread;Landroid/os/UserHandle;)V
+
+    iput-object v0, p0, Landroid/app/ContextImpl;->mContentResolver:Landroid/app/ContextImpl$ApplicationContentResolver;
+
+    iput-object p3, p0, Landroid/app/ContextImpl;->mUser:Landroid/os/UserHandle;
+
+    return-void
+.end method
+

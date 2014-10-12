@@ -655,7 +655,7 @@
 
     invoke-virtual {v9, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    invoke-direct {p0}, Landroid/view/VolumePanel;->listenToRingerMode()V
+    invoke-virtual {p0}, Landroid/view/VolumePanel;->listenToRingerMode()V
 
     invoke-direct {p0}, Landroid/view/VolumePanel;->applyTranslucentWindow()V
 
@@ -1869,7 +1869,7 @@
     if-nez v1, :cond_0
 
     .line 521
-    invoke-direct {p0}, Landroid/view/VolumePanel;->createSliders()V
+    invoke-virtual {p0}, Landroid/view/VolumePanel;->createSliders()V
 
     .line 523
     :cond_0

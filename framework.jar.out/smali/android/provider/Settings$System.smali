@@ -121,6 +121,8 @@
 
 .field public static final CAMERA_WAKE_SCREEN:Ljava/lang/String; = "camera_wake_screen"
 
+.field public static final BUTTON_LIGHT_OFF:Ljava/lang/String; = "button_light_off"
+
 .field public static final CAR_DOCK_SOUND:Ljava/lang/String; = "car_dock_sound"
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
@@ -791,6 +793,8 @@
 .field public static final VOLUME_OVERLAY_NONE:I = 0x3
 
 .field public static final VOLUME_OVERLAY_SINGLE:I = 0x0
+
+.field public static final VOLUME_REVOKE:Ljava/lang/String; = "volume_revoke"
 
 .field public static final VOLUME_RING:Ljava/lang/String; = "volume_ring"
 

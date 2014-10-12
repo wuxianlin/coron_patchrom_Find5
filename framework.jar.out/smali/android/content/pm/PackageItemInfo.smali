@@ -466,7 +466,11 @@
     .local v0, label:Ljava/lang/CharSequence;
     if-eqz v0, :cond_1
 
-    invoke-interface {v0}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+    invoke-direct {p0, p1, v0}, Landroid/content/pm/PackageItemInfo;->interceptLabelResBaidu(Landroid/content/pm/PackageManager;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v1
 
