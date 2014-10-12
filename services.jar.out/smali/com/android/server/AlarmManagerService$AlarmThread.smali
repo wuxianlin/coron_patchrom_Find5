@@ -179,8 +179,8 @@
 
     iget-object v1, v0, Lcom/android/server/AlarmManagerService$AlarmThread;->this$0:Lcom/android/server/AlarmManagerService;
 
-    #calls: Lcom/android/server/AlarmManagerService;->triggerAlarmsLocked(Ljava/util/ArrayList;JJ)V
-    invoke-static/range {v1 .. v6}, Lcom/android/server/AlarmManagerService;->access$800(Lcom/android/server/AlarmManagerService;Ljava/util/ArrayList;JJ)V
+    #calls: Lcom/android/server/AlarmManagerService;->triggerAlarmsLockedBaidu(Ljava/util/ArrayList;JJ)V
+    invoke-static/range {v1 .. v6}, Lcom/android/server/AlarmManagerService;->access$invoke-triggerAlarmsLockedBaidu-89620c(Lcom/android/server/AlarmManagerService;Ljava/util/ArrayList;JJ)V
 
     .line 1384
     move-object/from16 v0, p0

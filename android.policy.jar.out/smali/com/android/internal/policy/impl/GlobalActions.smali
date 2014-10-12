@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;,
         Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;,
         Lcom/android/internal/policy/impl/GlobalActions$SilentModeTriStateAction;,
         Lcom/android/internal/policy/impl/GlobalActions$SilentModeToggleAction;,
@@ -343,7 +344,7 @@
 
     move-result-object v4
 
-    const v7, 0x1110056
+    const v7, #android:bool@config_useFixedVolume#t
 
     invoke-virtual {v4, v7}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -777,7 +778,7 @@
     :goto_2
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$9;
 
-    const v2, 0x1080341
+    const v2, #android:drawable@ic_menu_cc#t
 
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -1046,15 +1047,15 @@
     :goto_0
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$1;
 
-    const v3, 0x10802ef
+    const v3, #android:drawable@ic_lock_expanded_desktop#t
 
-    const v4, 0x10802f0
+    const v4, #android:drawable@ic_lock_expanded_desktop_off#t
 
-    const v5, 0x1040060
+    const v5, #android:string@global_actions_toggle_expanded_desktop_mode#t
 
-    const v6, 0x1040061
+    const v6, #android:string@global_actions_expanded_desktop_mode_on_status#t
 
-    const v7, 0x1040062
+    const v7, #android:string@global_actions_expanded_desktop_mode_off_status#t
 
     move-object/from16 v2, p0
 
@@ -1070,15 +1071,15 @@
     .line 256
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$2;
 
-    const v3, 0x10802ec
+    const v3, #android:drawable@ic_lock_airplane_mode#t
 
-    const v4, 0x10802ed
+    const v4, #android:drawable@ic_lock_airplane_mode_off#t
 
-    const v5, 0x10401aa
+    const v5, #android:string@global_actions_toggle_airplane_mode#t
 
-    const v6, 0x10401ab
+    const v6, #android:string@global_actions_airplane_mode_on_status#t
 
-    const v7, 0x10401ac
+    const v7, #android:string@global_actions_airplane_mode_off_status#t
 
     move-object/from16 v2, p0
 
@@ -1117,9 +1118,9 @@
 
     new-instance v2, Lcom/android/internal/policy/impl/GlobalActions$3;
 
-    const v3, 0x1080030
+    const v3, #android:drawable@ic_lock_power_off#t
 
-    const v4, 0x10401a3
+    const v4, #android:string@global_action_power_off#t
 
     move-object/from16 v0, p0
 
@@ -1156,9 +1157,9 @@
 
     new-instance v2, Lcom/android/internal/policy/impl/GlobalActions$4;
 
-    const v3, 0x10802f3
+    const v3, #android:drawable@ic_lock_reboot#t
 
-    const v4, 0x1040073
+    const v4, #android:string@global_action_reboot#t
 
     move-object/from16 v0, p0
 
@@ -1246,9 +1247,9 @@
 
     new-instance v2, Lcom/android/internal/policy/impl/GlobalActions$6;
 
-    const v3, 0x10802f6
+    const v3, #android:drawable@ic_lock_screenshot#t
 
-    const v4, 0x104005f
+    const v4, #android:string@global_action_screenshot#t
 
     move-object/from16 v0, p0
 
@@ -1368,9 +1369,9 @@
 
     new-instance v2, Lcom/android/internal/policy/impl/GlobalActions$7;
 
-    const v3, 0x10805b8
+    const v3, #android:drawable@stat_sys_adb#t
 
-    const v4, 0x10401a4
+    const v4, #android:string@global_action_bug_report#t
 
     move-object/from16 v0, p0
 
@@ -2093,26 +2094,22 @@
 
     invoke-virtual {v1, v2}, Landroid/view/Window;->setType(I)V
 
-    .line 705
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mDialog:Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;
 
-    const v2, 0x10401a1
+    const v2, #android:string@global_actions#t
 
     invoke-virtual {v1, v2}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->setTitle(I)V
 
-    .line 707
     iget-boolean v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mShowSilentToggle:Z
 
     if-eqz v1, :cond_0
 
-    .line 708
     new-instance v0, Landroid/content/IntentFilter;
 
     const-string v1, "android.media.RINGER_MODE_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 709
     .local v0, filter:Landroid/content/IntentFilter;
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mContext:Landroid/content/Context;
 
@@ -2453,4 +2450,14 @@
     invoke-direct {p0}, Lcom/android/internal/policy/impl/GlobalActions;->handleShow()V
 
     goto :goto_0
+.end method
+
+.method static synthetic access$iget-mKeyguardShowing-38c164(Lcom/android/internal/policy/impl/GlobalActions;)Z
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/GlobalActions;->mKeyguardShowing:Z
+
+    return v0
 .end method

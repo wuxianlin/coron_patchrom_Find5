@@ -231,7 +231,7 @@
 
     .line 127
     .local v6, actualTitle:Ljava/lang/String;
-    const v1, 0x104050a
+    const v1, #android:string@ringtone_default_with_actual#t
 
     new-array v2, v11, [Ljava/lang/Object;
 
@@ -249,28 +249,23 @@
     :goto_1
     if-nez v10, :cond_1
 
-    .line 156
-    const v1, 0x104050d
+    const v1, #android:string@ringtone_unknown#t
 
     invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v10
 
-    .line 158
     if-nez v10, :cond_1
 
-    .line 159
     const-string v10, ""
 
     :cond_1
     move-object v1, v10
 
-    .line 163
     :cond_2
     :goto_2
     return-object v1
 
-    .line 123
     .restart local v8       #authority:Ljava/lang/String;
     :cond_3
     invoke-static {p1}, Landroid/media/RingtoneManager;->getDefaultType(Landroid/net/Uri;)I
@@ -425,7 +420,7 @@
 
     move-result-object v0
 
-    const v1, 0x1100001
+    const v1, #android:raw@fallbackring#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->openRawResourceFd(I)Landroid/content/res/AssetFileDescriptor;
 
@@ -759,30 +754,29 @@
 
     if-eqz v2, :cond_0
 
-    .line 224
     iget-object v2, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
 
     invoke-virtual {v2}, Landroid/media/MediaPlayer;->start()V
 
-    .line 240
     :cond_0
     :goto_0
     return-void
 
-    .line 226
     :cond_1
     iget-boolean v2, p0, Landroid/media/Ringtone;->mAllowRemote:Z
 
     if-eqz v2, :cond_2
 
-    .line 227
+    iget-object v2, p0, Landroid/media/Ringtone;->mUri:Landroid/net/Uri;
+
+    if-eqz v2, :cond_baidu_0
+
     iget-object v2, p0, Landroid/media/Ringtone;->mUri:Landroid/net/Uri;
 
     invoke-virtual {v2}, Landroid/net/Uri;->getCanonicalUri()Landroid/net/Uri;
 
     move-result-object v0
 
-    .line 229
     .local v0, canonicalUri:Landroid/net/Uri;
     :try_start_0
     iget-object v2, p0, Landroid/media/Ringtone;->mRemotePlayer:Landroid/media/IRingtonePlayer;
@@ -838,6 +832,7 @@
     .end local v0           #canonicalUri:Landroid/net/Uri;
     .end local v1           #e:Landroid/os/RemoteException;
     :cond_2
+    :cond_baidu_0
     invoke-direct {p0}, Landroid/media/Ringtone;->playFallbackRingtone()Z
 
     move-result v2

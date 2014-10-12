@@ -4747,42 +4747,49 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 3064
     invoke-virtual {p0, p1}, Lcom/android/server/am/ActivityStack;->taskForIdLocked(I)Lcom/android/server/am/TaskRecord;
 
     move-result-object v0
 
-    .line 3065
     .local v0, task:Lcom/android/server/am/TaskRecord;
+    iget-object v2, p0, Lcom/android/server/am/ActivityStack;->mContext:Landroid/content/Context;
+
+    invoke-static {v2, v0, p2}, Lcom/android/server/am/BaiduActivityInjector;->hookMoveTaskToFront(Landroid/content/Context;Lcom/android/server/am/TaskRecord;I)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_baidu_0
+
+    const/4 v1, 0x0
+
+    goto :goto_baidu_0
+
+    :cond_baidu_0
+
     if-eqz v0, :cond_2
 
-    .line 3066
     and-int/lit8 v2, p2, 0x2
 
     if-nez v2, :cond_0
 
-    .line 3067
     iget-object v2, p0, Lcom/android/server/am/ActivityStack;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     iput-boolean v1, v2, Lcom/android/server/am/ActivityStackSupervisor;->mUserLeaving:Z
 
-    .line 3069
     :cond_0
     and-int/lit8 v2, p2, 0x1
 
     if-eqz v2, :cond_1
 
-    .line 3072
     iput-boolean v1, v0, Lcom/android/server/am/TaskRecord;->mOnTopOfHome:Z
 
-    .line 3074
     :cond_1
     const/4 v2, 0x0
 
     invoke-virtual {p0, v0, v2, p3}, Lcom/android/server/am/ActivityStack;->moveTaskToFrontLocked(Lcom/android/server/am/TaskRecord;Lcom/android/server/am/ActivityRecord;Landroid/os/Bundle;)V
 
-    .line 3077
     :goto_0
+    :goto_baidu_0
     return v1
 
     :cond_2
@@ -11632,20 +11639,16 @@
 
     move-result-object v6
 
-    .line 703
     .local v6, res:Landroid/content/res/Resources;
     iget v3, p0, Lcom/android/server/am/ActivityStack;->mThumbnailWidth:I
 
-    .line 704
     .local v3, w:I
     iget v4, p0, Lcom/android/server/am/ActivityStack;->mThumbnailHeight:I
 
-    .line 705
     .local v4, h:I
     if-gez v3, :cond_2
 
-    .line 706
-    const v0, 0x1050002
+    const v0, #android:dimen@thumbnail_width#t
 
     invoke-virtual {v6, v0}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -11653,8 +11656,7 @@
 
     iput v3, p0, Lcom/android/server/am/ActivityStack;->mThumbnailWidth:I
 
-    .line 708
-    const v0, 0x1050001
+    const v0, #android:dimen@thumbnail_height#t
 
     invoke-virtual {v6, v0}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -14180,4 +14182,76 @@
 
     .line 3405
     goto :goto_2
+.end method
+
+.method clearAllActivityLocked()V
+    .locals 9
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityStack;->mTaskHistory:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    add-int/lit8 v8, v0, -0x1
+
+    .local v8, taskNdx:I
+    :goto_0
+    if-ltz v8, :cond_1
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityStack;->mTaskHistory:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, v8}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/am/TaskRecord;
+
+    iget-object v6, v0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    .local v6, activities:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ActivityRecord;>;"
+    invoke-virtual {v6}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    add-int/lit8 v7, v0, -0x1
+
+    .local v7, activityNdx:I
+    :goto_1
+    if-ltz v7, :cond_0
+
+    invoke-virtual {v6, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/am/ActivityRecord;
+
+    .local v1, r:Lcom/android/server/am/ActivityRecord;
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const-string v4, "clear"
+
+    const/4 v5, 0x1
+
+    move-object v0, p0
+
+    invoke-virtual/range {v0 .. v5}, Lcom/android/server/am/ActivityStack;->finishActivityLocked(Lcom/android/server/am/ActivityRecord;ILandroid/content/Intent;Ljava/lang/String;Z)Z
+
+    add-int/lit8 v7, v7, -0x1
+
+    goto :goto_1
+
+    .end local v1           #r:Lcom/android/server/am/ActivityRecord;
+    :cond_0
+    add-int/lit8 v8, v8, -0x1
+
+    goto :goto_0
+
+    .end local v6           #activities:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Lcom/android/server/am/ActivityRecord;>;"
+    .end local v7           #activityNdx:I
+    :cond_1
+    return-void
 .end method

@@ -1886,3 +1886,15 @@
 
     goto :goto_0
 .end method
+
+.method public constructor <init>(Landroid/net/IConnectivityManager;)V
+    .locals 1
+    .parameter "service"
+
+    .prologue
+    const-string v0, "android"
+
+    invoke-direct {p0, p1, v0}, Landroid/net/ConnectivityManager;-><init>(Landroid/net/IConnectivityManager;Ljava/lang/String;)V
+
+    return-void
+.end method

@@ -136,6 +136,10 @@
     .prologue
     const/4 v1, 0x0
 
+    iget-object v2, p0, Landroid/inputmethodservice/InputMethodService$InputMethodImpl;->this$0:Landroid/inputmethodservice/InputMethodService;
+
+    invoke-static {v2}, Landroid/inputmethodservice/InputMethodService$BaiduInjector;->finishActionModeIfStarted(Landroid/inputmethodservice/InputMethodService;)V
+
     .line 417
     iget-object v2, p0, Landroid/inputmethodservice/InputMethodService$InputMethodImpl;->this$0:Landroid/inputmethodservice/InputMethodService;
 

@@ -816,3 +816,32 @@
 
     return-object v0
 .end method
+
+.method public getSecondaryExternalStorageDirectory()Ljava/io/File;
+    .locals 3
+
+    .prologue
+    invoke-virtual {p0}, Landroid/os/Environment$UserEnvironment;->getExternalDirsForApp()[Ljava/io/File;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    array-length v1, v0
+
+    const/4 v2, 0x1
+
+    if-ge v2, v1, :cond_0
+
+    const/4 v2, 0x1
+
+    aget-object v1, v0, v2
+
+    :goto_0
+    return-object v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method

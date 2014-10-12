@@ -1448,7 +1448,7 @@
 
     move-result-object v3
 
-    const v6, 0x1040110
+    const v6, #android:string@config_customResolverActivity#t
 
     invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3542,7 +3542,7 @@
 
     move-result-object v3
 
-    const v6, 0x1070038
+    const v6, #android:array@config_disabledComponents#t
 
     invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -21175,7 +21175,7 @@
 
     iget-object v3, v0, Lcom/android/server/pm/PackageManagerService;->mResolveActivity:Landroid/content/pm/ActivityInfo;
 
-    const v10, 0x103030f
+    const v10, #android:style@Theme.DeviceDefault.Light.Dialog.Alert#t
 
     iput v10, v3, Landroid/content/pm/ActivityInfo;->theme:I
 
@@ -22791,13 +22791,11 @@
 
     invoke-direct {v0, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 4894
     .local v52, nativeLibraryDir:Ljava/io/File;
     invoke-virtual/range {v33 .. v33}, Ljava/io/File;->getCanonicalPath()Ljava/lang/String;
 
     move-result-object v34
 
-    .line 4896
     .local v34, dataPathString:Ljava/lang/String;
     invoke-static/range {p1 .. p1}, Lcom/android/server/pm/PackageManagerService;->isSystemApp(Landroid/content/pm/PackageParser$Package;)Z
 
@@ -50689,4 +50687,40 @@
 
     .line 7622
     return-void
+.end method
+
+.method private static isSystemAppBaidu(Landroid/content/pm/PackageParser$Package;)Z
+    .locals 5
+    .parameter "pkg"
+
+    .prologue
+    const/4 v2, 0x0
+
+    const/4 v1, 0x0
+
+    .local v1, suid:Lcom/android/server/pm/SharedUserSetting;
+    iget-object v3, p0, Landroid/content/pm/PackageParser$Package;->mExtras:Ljava/lang/Object;
+
+    if-eqz v3, :cond_0
+
+    iget-object v0, p0, Landroid/content/pm/PackageParser$Package;->mExtras:Ljava/lang/Object;
+
+    check-cast v0, Lcom/android/server/pm/PackageSetting;
+
+    .local v0, ps:Lcom/android/server/pm/PackageSetting;
+    iget-object v1, v0, Lcom/android/server/pm/PackageSetting;->sharedUser:Lcom/android/server/pm/SharedUserSetting;
+
+    if-eqz v1, :cond_0
+
+    iget v3, v1, Lcom/android/server/pm/SharedUserSetting;->userId:I
+
+    const/16 v4, 0x2710
+
+    if-ge v3, v4, :cond_0
+
+    const/4 v2, 0x1
+
+    .end local v0           #ps:Lcom/android/server/pm/PackageSetting;
+    :cond_0
+    return v2
 .end method

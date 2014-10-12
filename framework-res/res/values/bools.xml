@@ -119,4 +119,6 @@
     <bool name="config_smsUseExpectMore">false</bool>
     <bool name="config_proximityCheckOnWake">false</bool>
     <bool name="lockscreen_isPortrait">true</bool>
+    <bool name="config_wakeup_by_volume_key">true</bool>
+    <bool name="config_close_button_backlight">true</bool>
 </resources>

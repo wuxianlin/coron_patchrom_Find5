@@ -22,6 +22,9 @@
         Lcom/android/server/BackupManagerService$BackupState;,
         Lcom/android/server/BackupManagerService$BackupRestoreTask;,
         Lcom/android/server/BackupManagerService$ClearDataObserver;,
+	Lcom/android/server/BackupManagerService$ObserveBaiduTransport;,
+        Lcom/android/server/BackupManagerService$BaiduConnection;,
+        Lcom/android/server/BackupManagerService$BaiduBackupInjector;,
         Lcom/android/server/BackupManagerService$TransportConnection;,
         Lcom/android/server/BackupManagerService$RunInitializeReceiver;,
         Lcom/android/server/BackupManagerService$RunBackupReceiver;,
@@ -2063,13 +2066,13 @@
 
     goto/16 :goto_7
 
-    .line 953
     .end local v7           #e:Ljava/lang/Exception;
     .end local v12           #i:I
     :cond_11
+    invoke-static/range {p0 .. p0}, Lcom/android/server/BackupManagerService$BaiduBackupInjector;->registerBaiduTransport(Lcom/android/server/BackupManagerService;)V
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/BackupManagerService;->parseLeftoverJournals()V
 
-    .line 956
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/BackupManagerService;->mPowerManager:Landroid/os/PowerManager;

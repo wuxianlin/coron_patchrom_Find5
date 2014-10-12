@@ -22,7 +22,7 @@
 
 .field private static final EXPIRATION_GRACE_PERIOD_MS:J = 0x19bfcc00L
 
-.field private static final MONITORING_CERT_NOTIFICATION_ID:I = 0x104018d
+.field private static final MONITORING_CERT_NOTIFICATION_ID:I = #android:string@ssl_ca_cert_warning#t
 
 .field private static final MS_PER_DAY:J = 0x5265c00L
 
@@ -2310,7 +2310,7 @@
     .local v16, user:Landroid/content/pm/UserInfo;
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, #android:string@ssl_ca_cert_warning#t
 
     invoke-virtual/range {v16 .. v16}, Landroid/content/pm/UserInfo;->getUserHandle()Landroid/os/UserHandle;
 
@@ -2343,7 +2343,7 @@
 
     iget-object v1, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v2, 0x104018f
+    const v2, #android:string@ssl_ca_cert_noti_managed#t
 
     const/4 v4, 0x1
 
@@ -2361,11 +2361,9 @@
 
     move-result-object v7
 
-    .line 1120
     .local v7, contentText:Ljava/lang/String;
-    const v14, 0x10805d7
+    const v14, #android:drawable@stat_sys_certificate_info#t
 
-    .line 1126
     .local v14, smallIconId:I
     :goto_2
     new-instance v3, Landroid/content/Intent;
@@ -2420,7 +2418,7 @@
 
     iget-object v2, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x104018d
+    const v4, #android:string@ssl_ca_cert_warning#t
 
     invoke-virtual {v2, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2509,7 +2507,7 @@
     .restart local v16       #user:Landroid/content/pm/UserInfo;
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, #android:string@ssl_ca_cert_warning#t
 
     invoke-virtual/range {v16 .. v16}, Landroid/content/pm/UserInfo;->getUserHandle()Landroid/os/UserHandle;
 
@@ -2541,27 +2539,25 @@
 
     iget-object v1, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v2, 0x104018e
+    const v2, #android:string@ssl_ca_cert_noti_by_unknown#t
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 1123
     .restart local v7       #contentText:Ljava/lang/String;
-    const v14, 0x108008a
+    const v14, #android:drawable@stat_sys_warning#t
 
     .restart local v14       #smallIconId:I
     goto/16 :goto_2
 
-    .line 1152
     .restart local v3       #dialogIntent:Landroid/content/Intent;
     .restart local v11       #noti:Landroid/app/Notification;
     .restart local v13       #notifyIntent:Landroid/app/PendingIntent;
     :cond_3
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, #android:string@ssl_ca_cert_warning#t
 
     sget-object v4, Landroid/os/UserHandle;->CURRENT:Landroid/os/UserHandle;
 
@@ -3821,6 +3817,8 @@
 
     .line 794
     :cond_2
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/DevicePolicyManagerService;->validateAdmin(Landroid/content/ComponentName;I)V
+
     :try_start_0
     new-instance v5, Landroid/app/admin/DeviceAdminInfo;
 
@@ -12300,4 +12298,153 @@
     invoke-static {v4, v5, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_1
+.end method
+
+.method private validateAdmin(Landroid/content/ComponentName;I)V
+    .locals 7
+    .parameter "adminName"
+    .parameter "userHandle"
+
+    .prologue
+    new-instance v3, Landroid/content/Intent;
+
+    const-string v4, "android.app.action.DEVICE_ADMIN_ENABLED"
+
+    invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .local v3, intent:Landroid/content/Intent;
+    invoke-virtual {p1}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    iget-object v4, p0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v4}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v4
+
+    const/16 v5, 0x80
+
+    invoke-virtual {v4, v3, v5, p2}, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent;II)Ljava/util/List;
+
+    move-result-object v2
+
+    .local v2, infos:Ljava/util/List;,"Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
+    if-eqz v2, :cond_0
+
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-gtz v4, :cond_1
+
+    :cond_0
+    new-instance v4, Ljava/lang/IllegalArgumentException;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "admin: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " do not have ACTION_DEVICE_ADMIN_ENABLED filter"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
+
+    :cond_1
+    const/4 v0, 0x0
+
+    .local v0, found:Z
+    const/4 v1, 0x0
+
+    .local v1, i:I
+    :goto_0
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-ge v1, v4, :cond_2
+
+    invoke-virtual {p1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/content/pm/ResolveInfo;
+
+    iget-object v4, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v4, v4, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
+
+    invoke-virtual {v5, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3
+
+    const/4 v0, 0x1
+
+    :cond_2
+    if-nez v0, :cond_4
+
+    new-instance v4, Ljava/lang/IllegalArgumentException;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "admin: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " do not have ACTION_DEVICE_ADMIN_ENABLED filter"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v4
+
+    :cond_3
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    :cond_4
+    return-void
 .end method
