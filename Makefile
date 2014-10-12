@@ -68,7 +68,7 @@ vendor_remove_dirs := app vendor/operator/app
 ##############################################################################
 # Vendor apks you want to use
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothExt
+vendor_saved_apps := Bluetooth BluetoothExt Nfc Stk 
 
 ##############################################################################
 # Apks build from current project root directory
@@ -104,7 +104,7 @@ vendor_saved_apps := Bluetooth BluetoothExt
 # you need decode android.policy.jar to the project directory (use apktool d android.policy.jar) first
 # then you can make it by:   make android.policy
 #-----------------------------------------------------------------------------
-vendor_modify_jars := framework framework2 pm services telephony-common
+vendor_modify_jars := android.policy framework framework2 pm services telephony-common
 
 ##############################################################################
 # Directorys which you want to saved in baidu directory
@@ -125,7 +125,7 @@ vendor_modify_jars := framework framework2 pm services telephony-common
 # baidu_modify_apps: which base the baidu's apk
 # just override the res, append *.smali.part
 #-----------------------------------------------------------------------------
-baidu_modify_apps := Phone
+baidu_modify_apps := TeleService BaiduServiceFramework Keyguard
 
 ##############################################################################
 # baidu_modify_jars: which base the baidu's jar
@@ -153,8 +153,8 @@ baidu_modify_apps := Phone
 
 # The property decide your ID on the backend server which statistical data for your device.
 # You should configure the property according to your ID, ie, replace "Coron" with your ID.
-# override_property += \
-#    ro.baidu.romer=Coron
+override_property += \
+   ro.baidu.romer=wuxianlinwxl
 
 ##############################################################################
 # remove_property: this property will remove from the build.prop
