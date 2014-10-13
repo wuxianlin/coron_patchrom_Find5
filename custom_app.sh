@@ -4,6 +4,8 @@ tempSmaliDir=$2
 if [ "$apkBaseName" = "TeleService" ];then
         echo ">>> in custom_app for $apkBaseName to add some permissions for android 4.4.4"
 	sed -i '/<original-package android:name="com.android.phone" \/>/a\<uses-permission android:name="android.permission.SET_PREFERRED_APPLICATIONS" \/>' $tempSmaliDir/AndroidManifest.xml
+        echo ">>> in custom_app for $apkBaseName to fix Voice calling not supported"
+	sed -i -e '/sput-boolean v1, Lcom\/android\/phone\/PhoneGlobals;->sVoiceCapable:Z/ i\    const/4 v1, 0x1\n' $tempSmaliDir/smali/com/android/phone/PhoneGlobals.smali
 
 elif [ "$apkBaseName" = "Keyguard" ];then
         echo ">>> in custom_app for $apkBaseName to add some permissions for android 4.4.4"
