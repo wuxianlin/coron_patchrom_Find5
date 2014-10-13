@@ -38,17 +38,17 @@
     .parameter "params"
 
     .prologue
-    .line 965
+    .line 1025
     invoke-static {p1}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->getDialogTheme(Landroid/content/Context;)I
 
     move-result v0
 
     invoke-direct {p0, p1, v0}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
 
-    .line 966
+    .line 1026
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mContext:Landroid/content/Context;
 
-    .line 967
+    .line 1027
     new-instance v0, Lcom/android/internal/app/AlertController;
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mContext:Landroid/content/Context;
@@ -61,7 +61,7 @@
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
-    .line 968
+    .line 1028
     invoke-static {p1}, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
 
     move-result-object v0
@@ -72,12 +72,12 @@
 
     iput v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mWindowTouchSlop:I
 
-    .line 969
+    .line 1029
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     invoke-virtual {p2, v0}, Lcom/android/internal/app/AlertController$AlertParams;->apply(Lcom/android/internal/app/AlertController;)V
 
-    .line 970
+    .line 1030
     return-void
 .end method
 
@@ -86,12 +86,12 @@
     .parameter "context"
 
     .prologue
-    .line 973
+    .line 1033
     new-instance v0, Landroid/util/TypedValue;
 
     invoke-direct {v0}, Landroid/util/TypedValue;-><init>()V
 
-    .line 974
+    .line 1034
     .local v0, outValue:Landroid/util/TypedValue;
     invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
@@ -103,7 +103,7 @@
 
     invoke-virtual {v1, v2, v0, v3}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
-    .line 976
+    .line 1036
     iget v1, v0, Landroid/util/TypedValue;->resourceId:I
 
     return v1
@@ -120,21 +120,21 @@
 
     const/4 v12, 0x0
 
-    .line 1005
+    .line 1065
     iget-object v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
     if-eqz v2, :cond_4
 
-    .line 1006
+    .line 1066
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     move-result v8
 
-    .line 1007
+    .line 1067
     .local v8, action:I
     if-nez v8, :cond_1
 
-    .line 1008
+    .line 1068
     invoke-virtual {p0}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->getWindow()Landroid/view/Window;
 
     move-result-object v2
@@ -143,7 +143,7 @@
 
     move-result-object v9
 
-    .line 1009
+    .line 1069
     .local v9, decor:Landroid/view/View;
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -151,7 +151,7 @@
 
     float-to-int v10, v2
 
-    .line 1010
+    .line 1070
     .local v10, eventX:I
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -159,7 +159,7 @@
 
     float-to-int v11, v2
 
-    .line 1011
+    .line 1071
     .local v11, eventY:I
     iget v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mWindowTouchSlop:I
 
@@ -193,11 +193,11 @@
 
     if-lt v11, v2, :cond_1
 
-    .line 1015
+    .line 1075
     :cond_0
     iput-boolean v13, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
-    .line 1019
+    .line 1079
     .end local v9           #decor:Landroid/view/View;
     .end local v10           #eventX:I
     .end local v11           #eventY:I
@@ -207,7 +207,7 @@
 
     if-nez v2, :cond_6
 
-    .line 1020
+    .line 1080
     iget-object v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
     invoke-virtual {v2, p1}, Lcom/android/internal/policy/impl/EnableAccessibilityController;->onInterceptTouchEvent(Landroid/view/MotionEvent;)Z
@@ -216,17 +216,17 @@
 
     iput-boolean v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mIntercepted:Z
 
-    .line 1021
+    .line 1081
     iget-boolean v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mIntercepted:Z
 
     if-eqz v2, :cond_2
 
-    .line 1022
+    .line 1082
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
-    .line 1023
+    .line 1083
     .local v0, now:J
     const/4 v4, 0x3
 
@@ -242,39 +242,39 @@
 
     move-result-object p1
 
-    .line 1025
+    .line 1085
     const/16 v2, 0x1002
 
     invoke-virtual {p1, v2}, Landroid/view/MotionEvent;->setSource(I)V
 
-    .line 1026
+    .line 1086
     const/4 v2, 0x1
 
     iput-boolean v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1032
+    .line 1092
     .end local v0           #now:J
     :cond_2
     if-ne v8, v13, :cond_4
 
-    .line 1033
+    .line 1093
     iget-boolean v2, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
     if-eqz v2, :cond_3
 
-    .line 1034
+    .line 1094
     invoke-virtual {p0}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->cancel()V
 
-    .line 1036
+    .line 1096
     :cond_3
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
-    .line 1037
+    .line 1097
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mIntercepted:Z
 
-    .line 1041
+    .line 1101
     .end local v8           #action:I
     :cond_4
     invoke-super {p0, p1}, Landroid/app/Dialog;->dispatchTouchEvent(Landroid/view/MotionEvent;)Z
@@ -285,7 +285,7 @@
     :goto_0
     return v2
 
-    .line 1029
+    .line 1089
     .restart local v8       #action:I
     :cond_6
     :try_start_1
@@ -297,45 +297,45 @@
 
     move-result v2
 
-    .line 1032
+    .line 1092
     if-ne v8, v13, :cond_5
 
-    .line 1033
+    .line 1093
     iget-boolean v3, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
     if-eqz v3, :cond_7
 
-    .line 1034
+    .line 1094
     invoke-virtual {p0}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->cancel()V
 
-    .line 1036
+    .line 1096
     :cond_7
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
-    .line 1037
+    .line 1097
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mIntercepted:Z
 
     goto :goto_0
 
-    .line 1032
+    .line 1092
     :catchall_0
     move-exception v2
 
     if-ne v8, v13, :cond_9
 
-    .line 1033
+    .line 1093
     iget-boolean v3, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
     if-eqz v3, :cond_8
 
-    .line 1034
+    .line 1094
     invoke-virtual {p0}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->cancel()V
 
-    .line 1036
+    .line 1096
     :cond_8
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mCancelOnUp:Z
 
-    .line 1037
+    .line 1097
     iput-boolean v12, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mIntercepted:Z
 
     :cond_9
@@ -346,7 +346,7 @@
     .locals 1
 
     .prologue
-    .line 1045
+    .line 1105
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->getListView()Landroid/widget/ListView;
@@ -361,15 +361,15 @@
     .parameter "savedInstanceState"
 
     .prologue
-    .line 1050
+    .line 1110
     invoke-super {p0, p1}, Landroid/app/Dialog;->onCreate(Landroid/os/Bundle;)V
 
-    .line 1051
+    .line 1111
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->installContent()V
 
-    .line 1052
+    .line 1112
     return-void
 .end method
 
@@ -379,7 +379,7 @@
     .parameter "event"
 
     .prologue
-    .line 1056
+    .line 1116
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/internal/app/AlertController;->onKeyDown(ILandroid/view/KeyEvent;)Z
@@ -388,10 +388,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 1057
+    .line 1117
     const/4 v0, 0x1
 
-    .line 1059
+    .line 1119
     :goto_0
     return v0
 
@@ -409,7 +409,7 @@
     .parameter "event"
 
     .prologue
-    .line 1064
+    .line 1124
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/internal/app/AlertController;->onKeyUp(ILandroid/view/KeyEvent;)Z
@@ -418,10 +418,10 @@
 
     if-eqz v0, :cond_0
 
-    .line 1065
+    .line 1125
     const/4 v0, 0x1
 
-    .line 1067
+    .line 1127
     :goto_0
     return v0
 
@@ -437,7 +437,7 @@
     .locals 2
 
     .prologue
-    .line 985
+    .line 1045
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Lcom/android/internal/policy/impl/EnableAccessibilityController;->canEnableAccessibilityViaGesture(Landroid/content/Context;)Z
@@ -446,7 +446,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 986
+    .line 1046
     new-instance v0, Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mContext:Landroid/content/Context;
@@ -455,25 +455,25 @@
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
-    .line 987
+    .line 1047
     const/4 v0, 0x0
 
     invoke-super {p0, v0}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
 
-    .line 992
+    .line 1052
     :goto_0
     invoke-super {p0}, Landroid/app/Dialog;->onStart()V
 
-    .line 993
+    .line 1053
     return-void
 
-    .line 989
+    .line 1049
     :cond_0
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
-    .line 990
+    .line 1050
     const/4 v0, 0x1
 
     invoke-super {p0, v0}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
@@ -485,20 +485,20 @@
     .locals 1
 
     .prologue
-    .line 997
+    .line 1057
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
     if-eqz v0, :cond_0
 
-    .line 998
+    .line 1058
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/EnableAccessibilityController;->onDestroy()V
 
-    .line 1000
+    .line 1060
     :cond_0
     invoke-super {p0}, Landroid/app/Dialog;->onStop()V
 
-    .line 1001
+    .line 1061
     return-void
 .end method

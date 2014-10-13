@@ -26,7 +26,7 @@
     .parameter "x1"
 
     .prologue
-    .line 257
+    .line 274
     iput-object p1, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     invoke-direct {p0, p2, p3}, Lcom/android/internal/policy/impl/GlobalActions$SinglePressAction;-><init>(II)V
@@ -42,45 +42,130 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 265
+    .line 302
     iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
     #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$500(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$600(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
 
     move-result-object v0
 
-    invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->rebootSafeMode(Z)V
+    invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->shutdown(Z)V
 
-    .line 266
+    .line 303
     return v1
 .end method
 
 .method public onPress()V
-    .locals 2
+    .locals 6
 
     .prologue
-    .line 261
-    iget-object v0, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
+    const/4 v3, 0x1
 
-    #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
-    invoke-static {v0}, Lcom/android/internal/policy/impl/GlobalActions;->access$500(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+    .line 278
+    const/4 v1, 0x0
+
+    .line 279
+    .local v1, quickbootAvailable:Z
+    iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
+
+    #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mContext:Landroid/content/Context;
+    invoke-static {v4}, Lcom/android/internal/policy/impl/GlobalActions;->access$200(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/content/Context;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v0
 
+    .line 281
+    .local v0, pm:Landroid/content/pm/PackageManager;
+    :try_start_0
+    const-string v4, "com.qapp.quickboot"
+
+    const/16 v5, 0x80
+
+    invoke-virtual {v0, v4, v5}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 282
     const/4 v1, 0x1
 
-    invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->shutdown(Z)V
+    .line 286
+    :goto_0
+    iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
 
-    .line 262
+    #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mContext:Landroid/content/Context;
+    invoke-static {v4}, Lcom/android/internal/policy/impl/GlobalActions;->access$200(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/content/Context;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v4
+
+    const-string v5, "enable_quickboot"
+
+    invoke-static {v4, v5, v3}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v4
+
+    if-ne v4, v3, :cond_0
+
+    move v2, v3
+
+    .line 291
+    .local v2, quickbootEnabled:Z
+    :goto_1
+    if-eqz v1, :cond_1
+
+    if-eqz v2, :cond_1
+
+    .line 292
+    iget-object v3, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
+
+    #calls: Lcom/android/internal/policy/impl/GlobalActions;->startQuickBoot()V
+    invoke-static {v3}, Lcom/android/internal/policy/impl/GlobalActions;->access$500(Lcom/android/internal/policy/impl/GlobalActions;)V
+
+    .line 298
+    :goto_2
     return-void
+
+    .line 286
+    .end local v2           #quickbootEnabled:Z
+    :cond_0
+    const/4 v2, 0x0
+
+    goto :goto_1
+
+    .line 297
+    .restart local v2       #quickbootEnabled:Z
+    :cond_1
+    iget-object v4, p0, Lcom/android/internal/policy/impl/GlobalActions$2;->this$0:Lcom/android/internal/policy/impl/GlobalActions;
+
+    #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+    invoke-static {v4}, Lcom/android/internal/policy/impl/GlobalActions;->access$600(Lcom/android/internal/policy/impl/GlobalActions;)Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
+
+    move-result-object v4
+
+    invoke-interface {v4, v3}, Landroid/view/WindowManagerPolicy$WindowManagerFuncs;->shutdown(Z)V
+
+    goto :goto_2
+
+    .line 283
+    .end local v2           #quickbootEnabled:Z
+    :catch_0
+    move-exception v4
+
+    goto :goto_0
 .end method
 
 .method public showBeforeProvisioning()Z
     .locals 1
 
     .prologue
-    .line 274
+    .line 311
     const/4 v0, 0x1
 
     return v0
@@ -90,7 +175,7 @@
     .locals 1
 
     .prologue
-    .line 270
+    .line 307
     const/4 v0, 0x1
 
     return v0

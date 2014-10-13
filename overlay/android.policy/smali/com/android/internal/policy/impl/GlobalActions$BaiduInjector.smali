@@ -79,14 +79,15 @@
     return-void
 .end method
 
-.method static synthetic access$sget-mScreenshotLock-0429bb()Ljava/lang/Object;
-    .locals 1
+.method static synthetic access$invoke-takeScreenShot-e80c68(Landroid/content/Context;)V
+    .locals 0
+    .parameter "x0"
 
     .prologue
     .line 1057
-    sget-object v0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mScreenshotLock:Ljava/lang/Object;
+    invoke-static {p0}, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->takeScreenShot(Landroid/content/Context;)V
 
-    return-object v0
+    return-void
 .end method
 
 .method static synthetic access$sget-mGlobalActions-a61d42()Lcom/android/internal/policy/impl/GlobalActions;
@@ -99,17 +100,6 @@
     return-object v0
 .end method
 
-.method static synthetic access$invoke-takeScreenShot-e80c68(Landroid/content/Context;)V
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 1057
-    invoke-static {p0}, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->takeScreenShot(Landroid/content/Context;)V
-
-    return-void
-.end method
-
 .method static synthetic access$sget-mScreenshotConnection-22a399()Landroid/content/ServiceConnection;
     .locals 1
 
@@ -120,23 +110,22 @@
     return-object v0
 .end method
 
-.method static synthetic access$sput-mScreenshotConnection-a527ce(Landroid/content/ServiceConnection;)Landroid/content/ServiceConnection;
-    .locals 0
-    .parameter "x0"
-
-    .prologue
-    .line 1057
-    sput-object p0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mScreenshotConnection:Landroid/content/ServiceConnection;
-
-    return-object p0
-.end method
-
 .method static synthetic access$sget-mScreenshotHandler-c6f3d5()Landroid/os/Handler;
     .locals 1
 
     .prologue
     .line 1057
     sget-object v0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mScreenshotHandler:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic access$sget-mScreenshotLock-0429bb()Ljava/lang/Object;
+    .locals 1
+
+    .prologue
+    .line 1057
+    sget-object v0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mScreenshotLock:Ljava/lang/Object;
 
     return-object v0
 .end method
@@ -161,6 +150,17 @@
     return-object v0
 .end method
 
+.method static synthetic access$sput-mScreenshotConnection-a527ce(Landroid/content/ServiceConnection;)Landroid/content/ServiceConnection;
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 1057
+    sput-object p0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mScreenshotConnection:Landroid/content/ServiceConnection;
+
+    return-object p0
+.end method
+
 .method public static addRebootMenu(Lcom/android/internal/policy/impl/GlobalActions;)V
     .locals 3
     .parameter "globalActions"
@@ -170,9 +170,9 @@
 
     new-instance v0, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector$5;
 
-    const v1, #android:drawable@ic_lock_reboot#t
+    const v1, 0x10802f3
 
-    const v2, #android:string@global_action_reboot#t
+    const v2, 0x1040073
 
     invoke-direct {v0, v1, v2}, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector$5;-><init>(II)V
 
@@ -180,7 +180,7 @@
     sget-object v1, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector;->mGlobalActions:Lcom/android/internal/policy/impl/GlobalActions;
 
     #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mItems:Ljava/util/ArrayList;
-    invoke-static {v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1000(Lcom/android/internal/policy/impl/GlobalActions;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lcom/android/internal/policy/impl/GlobalActions;->access$1100(Lcom/android/internal/policy/impl/GlobalActions;)Ljava/util/ArrayList;
 
     move-result-object v1
 
@@ -199,15 +199,15 @@
 
     .line 1137
     #getter for: Lcom/android/internal/policy/impl/GlobalActions;->mItems:Ljava/util/ArrayList;
-    invoke-static {p0}, Lcom/android/internal/policy/impl/GlobalActions;->access$1000(Lcom/android/internal/policy/impl/GlobalActions;)Ljava/util/ArrayList;
+    invoke-static {p0}, Lcom/android/internal/policy/impl/GlobalActions;->access$1100(Lcom/android/internal/policy/impl/GlobalActions;)Ljava/util/ArrayList;
 
     move-result-object v0
 
     new-instance v1, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector$4;
 
-    const v2, #android:drawable@ic_lock_screenshot#t
+    const v2, 0x10802f6
 
-    const v3, #android:string@global_action_screenshot#t
+    const v3, 0x104005f
 
     invoke-direct {v1, v2, v3}, Lcom/android/internal/policy/impl/GlobalActions$BaiduInjector$4;-><init>(II)V
 
