@@ -125,7 +125,7 @@ vendor_modify_jars := android.policy framework framework2 pm services telephony-
 # baidu_modify_apps: which base the baidu's apk
 # just override the res, append *.smali.part
 #-----------------------------------------------------------------------------
-baidu_modify_apps := TeleService BaiduServiceFramework Keyguard
+baidu_modify_apps := TeleService BaiduServiceFramework Keyguard Settings
 
 ##############################################################################
 # baidu_modify_jars: which base the baidu's jar

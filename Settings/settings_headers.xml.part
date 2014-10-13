@@ -1,0 +1,1 @@
+    <header android:id="@id/manufacturer_settings" android:icon="@drawable/ic_settings_auto" >
