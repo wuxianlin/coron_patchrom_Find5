@@ -439,19 +439,19 @@
 
     invoke-virtual {v6, p3}, Landroid/text/Layout;->getLineTop(I)I
 
-    move-result v6
-
-    iget v7, v1, Landroid/util/DisplayMetrics;->density:F
-
-    float-to-int v7, v7
-
-    mul-int/lit8 v7, v7, 0x28
-
-    sub-int v4, v6, v7
+    move-result v4
 
     .line 184
     .local v4, lineTop:I
     :goto_0
+    iget v6, v1, Landroid/util/DisplayMetrics;->density:F
+
+    float-to-int v6, v6
+
+    mul-int/lit8 v6, v6, 0x14
+
+    sub-int/2addr v4, v6
+
     iget-object v6, p0, Landroid/widget/MagnifierController;->mParent:Landroid/widget/TextView;
 
     invoke-virtual {v6}, Landroid/widget/TextView;->getLayout()Landroid/text/Layout;

@@ -8884,7 +8884,7 @@
 
     move-result-object v24
 
-    const v25, 0x1040172
+    const v25, #android:string@roamingTextSearching#t
 
     invoke-virtual/range {v24 .. v25}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -9504,42 +9504,39 @@
 
     invoke-virtual {p0, v3}, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->log(Ljava/lang/String;)V
 
-    .line 546
     new-instance v0, Landroid/content/Intent;
 
     const-string v3, "android.provider.Telephony.SPN_STRINGS_UPDATED"
 
     invoke-direct {v0, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 547
     .local v0, intent:Landroid/content/Intent;
     const/high16 v3, 0x2000
 
     invoke-virtual {v0, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 548
     const-string v3, "showSpn"
 
     invoke-virtual {v0, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 549
     const-string v3, "spn"
 
     const-string v4, ""
 
     invoke-virtual {v0, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 550
     const-string v3, "showPlmn"
 
     invoke-virtual {v0, v3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 551
     const-string v3, "plmn"
+
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->updatePlmnOrSpnDisplay(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
 
     invoke-virtual {v0, v3, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 552
     iget-object v3, p0, Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;->mPhone:Lcom/android/internal/telephony/cdma/CDMAPhone;
 
     invoke-virtual {v3}, Lcom/android/internal/telephony/cdma/CDMAPhone;->getContext()Landroid/content/Context;

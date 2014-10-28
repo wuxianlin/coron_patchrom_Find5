@@ -796,7 +796,14 @@
     .local v2, newPosY:F
     invoke-virtual {p0, v1, v2}, Landroid/widget/Editor$HandleView;->updatePosition(FF)V
 
-    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$BaiduEditorInjector;->update(Landroid/widget/Editor$HandleView;)V
+    iget-object v8, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    #getter for: Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
+    invoke-static {v8}, Landroid/widget/Editor;->access$600(Landroid/widget/Editor;)Landroid/widget/TextView;
+
+    move-result-object v8
+
+    invoke-static {v8, p0}, Landroid/widget/Editor$BaiduEditorInjector;->update(Landroid/widget/TextView;Landroid/widget/Editor$HandleView;)V
 
     goto :goto_0
 

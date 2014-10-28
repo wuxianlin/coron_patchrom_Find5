@@ -334,3 +334,112 @@
 
     goto :goto_1
 .end method
+
+.method public static enableMagnifier(Landroid/widget/TextView;)V
+    .locals 1
+    .parameter "textView"
+
+    .prologue
+    if-eqz p0, :cond_0
+
+    invoke-virtual {p0}, Landroid/widget/TextView;->getDefaultEditable()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    instance-of v0, p0, Landroid/widget/EditText;
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    sget-object v0, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    if-nez v0, :cond_2
+
+    new-instance v0, Landroid/widget/MagnifierController;
+
+    invoke-direct {v0, p0}, Landroid/widget/MagnifierController;-><init>(Landroid/widget/TextView;)V
+
+    sput-object v0, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    goto :goto_0
+
+    :cond_2
+    sget-object v0, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    iget-object v0, v0, Landroid/widget/MagnifierController;->mParent:Landroid/widget/TextView;
+
+    if-eq v0, p0, :cond_0
+
+    new-instance v0, Landroid/widget/MagnifierController;
+
+    invoke-direct {v0, p0}, Landroid/widget/MagnifierController;-><init>(Landroid/widget/TextView;)V
+
+    sput-object v0, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    goto :goto_0
+.end method
+
+.method public static update(Landroid/widget/TextView;Landroid/widget/Editor$HandleView;)V
+    .locals 2
+    .parameter "textView"
+    .parameter "view"
+
+    .prologue
+    invoke-virtual {p1}, Landroid/widget/Editor$HandleView;->isShowing()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    const/4 v0, -0x1
+
+    .local v0, type:I
+    instance-of v1, p1, Landroid/widget/Editor$InsertionHandleView;
+
+    if-eqz v1, :cond_3
+
+    const/4 v0, 0x1
+
+    :cond_2
+    :goto_1
+    invoke-static {p0}, Landroid/widget/Editor$BaiduEditorInjector;->enableMagnifier(Landroid/widget/TextView;)V
+
+    sget-object v1, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    if-eqz v1, :cond_0
+
+    sget-object v1, Landroid/widget/Editor$BaiduEditorInjector;->mMagnifierController:Landroid/widget/MagnifierController;
+
+    invoke-virtual {v1, v0}, Landroid/widget/MagnifierController;->update(I)V
+
+    goto :goto_0
+
+    :cond_3
+    instance-of v1, p1, Landroid/widget/Editor$SelectionStartHandleView;
+
+    if-eqz v1, :cond_4
+
+    const/4 v0, 0x0
+
+    goto :goto_1
+
+    :cond_4
+    instance-of v1, p1, Landroid/widget/Editor$SelectionEndHandleView;
+
+    if-eqz v1, :cond_2
+
+    const/4 v0, 0x2
+
+    goto :goto_1
+.end method

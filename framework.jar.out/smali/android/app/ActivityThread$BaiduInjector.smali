@@ -97,6 +97,7 @@
     if-eqz v2, :cond_0
 
     .line 198
+    :try_start_0
     invoke-virtual {v2}, Landroid/content/res/Resources;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v3
@@ -125,10 +126,17 @@
     move-result-object v4
 
     invoke-virtual {v3, v4}, Landroid/content/res/BaiduAssetManager;->setContext(Landroid/content/Context;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
     .line 204
+    :catch_0
+    move-exception v3
+
+    goto :goto_0
+
     .end local v0           #entry:Ljava/util/Map$Entry;,"Ljava/util/Map$Entry<Landroid/content/res/ResourcesKey;Ljava/lang/ref/WeakReference<Landroid/content/res/Resources;>;>;"
     .end local v2           #r:Landroid/content/res/Resources;
     :cond_1

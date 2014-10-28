@@ -47,7 +47,7 @@ SIGN_OTA := true
 # NULL, check boot.img/recovery.img in project root directory, if it exists,
 # use a prebuilt boot.img/recovery.img, if not, nothing to do
 #-----------------------------------------------------------------------------
-#vendor_modify_images := boot
+vendor_modify_images := boot
 
 ##############################################################################
 # customize weather add assert in update-script of ota package
@@ -119,19 +119,19 @@ vendor_modify_jars := android.policy framework framework2 pm services telephony-
 ##############################################################################
 # baidu_remove_apps: those baidu apk you want remove 
 #-----------------------------------------------------------------------------
-# baidu_remove_apps := BaiduUserFeedback.apk
+baidu_remove_apps := NfcNci Tag
 
 ##############################################################################
 # baidu_modify_apps: which base the baidu's apk
 # just override the res, append *.smali.part
 #-----------------------------------------------------------------------------
-baidu_modify_apps := TeleService BaiduServiceFramework Keyguard Settings
+baidu_modify_apps := TeleService BaiduServiceFramework Keyguard MediaProvider Settings
 
 ##############################################################################
 # baidu_modify_jars: which base the baidu's jar
 # just append *.smali.part
 #-----------------------------------------------------------------------------
-# baidu_modify_jars := android.policy
+baidu_modify_jars := framework-yi
 
 ##############################################################################
 # override_property: this property will override the build.prop

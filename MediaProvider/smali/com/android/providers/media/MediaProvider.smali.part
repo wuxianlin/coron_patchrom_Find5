@@ -1,0 +1,28 @@
+.method private getExternalStorageFatVolumeId()I
+    .locals 2
+
+    .prologue
+    invoke-virtual {p0}, Landroid/content/ContentProvider;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    .line 553
+    const-string v1, "storage"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/storage/StorageManager;
+
+    invoke-virtual {v0}, Landroid/os/storage/StorageManager;->getPrimaryVolume()Landroid/os/storage/StorageVolume;
+
+    move-result-object v0
+
+    .line 558
+    invoke-virtual {v0}, Landroid/os/storage/StorageVolume;->getFatVolumeId()I
+
+    move-result v1
+
+    return v1
+.end method

@@ -5123,6 +5123,46 @@
     throw v1
 .end method
 
+.method private setImplLocked(IJJJJLandroid/app/PendingIntent;ZZLandroid/os/WorkSource;)V
+    .locals 16
+    .parameter "type"
+    .parameter "when"
+    .parameter "whenElapsed"
+    .parameter "maxWhen"
+    .parameter "interval"
+    .parameter "operation"
+    .parameter "isStandalone"
+    .parameter "doValidate"
+    .parameter "workSource"
+
+    .prologue
+    move-object/from16 v0, p0
+
+    move/from16 v1, p1
+
+    move-wide/from16 v2, p2
+
+    move-wide/from16 v4, p4
+
+    const-wide/16 v6, 0x0
+
+    move-wide/from16 v8, p6
+
+    move-wide/from16 v10, p8
+
+    move-object/from16 v12, p10
+
+    move/from16 v13, p11
+
+    move/from16 v14, p12
+
+    move-object/from16 v15, p13
+
+    invoke-direct/range {v0 .. v15}, Lcom/android/server/AlarmManagerService;->setImplLocked(IJJJJJLandroid/app/PendingIntent;ZZLandroid/os/WorkSource;)V
+
+    return-void
+.end method
+
 .method static synthetic access$iget-mAlarmBatches-a159e0(Lcom/android/server/AlarmManagerService;)Ljava/util/ArrayList;
     .locals 1
     .parameter "x0"

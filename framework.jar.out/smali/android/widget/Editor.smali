@@ -19,6 +19,7 @@
         Landroid/widget/Editor$SelectionStartHandleView;,
         Landroid/widget/Editor$InsertionHandleView;,
         Landroid/widget/Editor$HandleView;,
+        Landroid/widget/Editor$BaiduClipboardPopupWindow;,
         Landroid/widget/Editor$BaiduActionPopupWindow;,
         Landroid/widget/Editor$ActionPopupWindow;,
         Landroid/widget/Editor$SelectionActionModeCallback;,
@@ -183,26 +184,31 @@
     .prologue
     const/4 v1, 0x1
 
+    .line 208
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 147
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/widget/Editor;->mInputType:I
 
+    .line 155
     iput-boolean v1, p0, Landroid/widget/Editor;->mCursorVisible:Z
 
+    .line 172
     iput-boolean v1, p0, Landroid/widget/Editor;->mShowSoftInputOnFocus:Z
 
+    .line 180
     const/4 v0, 0x2
 
     new-array v0, v0, [Landroid/graphics/drawable/Drawable;
 
     iput-object v0, p0, Landroid/widget/Editor;->mCursorDrawable:[Landroid/graphics/drawable/Drawable;
 
+    .line 209
     iput-object p1, p0, Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
 
-    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$BaiduEditorInjector;->enableMagnifier(Landroid/widget/Editor;)V
-
+    .line 210
     return-void
 .end method
 

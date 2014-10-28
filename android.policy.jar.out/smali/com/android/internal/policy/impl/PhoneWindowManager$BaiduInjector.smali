@@ -1077,12 +1077,14 @@
 .end method
 
 .method public static longPressKiller(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/view/KeyEvent;)I
-    .locals 11
+    .locals 12
     .parameter "phoneWindowManager"
     .parameter "event"
 
     .prologue
-    const/4 v10, 0x4
+    const/4 v11, 0x4
+
+    const/4 v6, 0x1
 
     const/4 v5, 0x0
 
@@ -1093,61 +1095,61 @@
     .local v1, keyCode:I
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getAction()I
 
-    move-result v6
+    move-result v7
 
-    if-nez v6, :cond_4
+    if-nez v7, :cond_5
 
-    const/4 v0, 0x1
+    move v0, v6
 
     .local v0, down:Z
     :goto_0
-    if-ne v1, v10, :cond_1
+    if-ne v1, v11, :cond_1
 
     if-eqz v0, :cond_1
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
 
-    move-result v6
+    move-result v7
 
-    if-nez v6, :cond_1
+    if-nez v7, :cond_1
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getDownTime()J
 
     move-result-wide v3
 
     .local v3, nowTime:J
-    sget-wide v6, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->mLastBackTime:J
+    sget-wide v7, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->mLastBackTime:J
 
-    sub-long v6, v3, v6
+    sub-long v7, v3, v7
 
-    const-wide/16 v8, 0x384
+    const-wide/16 v9, 0x384
 
-    cmp-long v6, v6, v8
+    cmp-long v7, v7, v9
 
-    if-gez v6, :cond_0
+    if-gez v7, :cond_0
 
-    const-string v6, "mafeifei"
+    const-string v7, "mafeifei"
 
-    const-string v7, "send notification"
+    const-string v8, "send notification"
 
-    invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v7, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     new-instance v2, Landroid/content/Intent;
 
-    const-string v6, "com.baidu.killme"
+    const-string v7, "com.baidu.killme"
 
-    invoke-direct {v2, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .local v2, notificationIntent:Landroid/content/Intent;
-    const-string v6, "notification"
+    const-string v7, "notification"
 
-    const-string v7, "can_use_back_longpress"
+    const-string v8, "can_use_back_longpress"
 
-    invoke-virtual {v2, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v2, v7, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    iget-object v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+    iget-object v7, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+    invoke-virtual {v7, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
     .end local v2           #notificationIntent:Landroid/content/Intent;
     :cond_0
@@ -1155,21 +1157,21 @@
 
     .end local v3           #nowTime:J
     :cond_1
-    if-ne v1, v10, :cond_3
+    if-ne v1, v11, :cond_4
 
     invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->getBackLongPressBehavior()I
 
-    move-result v6
+    move-result v7
 
-    if-eqz v6, :cond_3
+    if-eqz v7, :cond_4
 
     if-eqz v0, :cond_6
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
 
-    move-result v6
+    move-result v7
 
-    if-nez v6, :cond_5
+    if-ne v7, v6, :cond_3
 
     invoke-static {}, Lcom/android/internal/policy/impl/PhoneWindowManager$BaiduInjector;->getBackLongPressBehavior()I
 
@@ -1209,26 +1211,30 @@
 
     move-result-object v7
 
-    const-wide/16 v8, 0x320
+    const-wide/16 v8, 0x2bc
 
     invoke-virtual {v6, v7, v8, v9}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     :cond_3
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
+
+    move-result v6
+
+    if-lez v6, :cond_4
+
+    const/4 v5, -0x1
+
+    :cond_4
     :goto_1
     return v5
 
     .end local v0           #down:Z
-    :cond_4
+    :cond_5
     move v0, v5
 
     goto :goto_0
 
     .restart local v0       #down:Z
-    :cond_5
-    const/4 v5, -0x1
-
-    goto :goto_1
-
     :cond_6
     iget-object v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHandler:Landroid/os/Handler;
 
